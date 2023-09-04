@@ -14253,3 +14253,6 @@ fatal: could not read Password for 'https://ghp_IZZ2KTSBGVVsFyEE1jVNoyQCPRnrTg0m
 
 Command {update_git_script} finished
 
+Running Command {update_git_script}...:
+cp: -r not specified; omitting directory '/home/pi/printer_data/'
+
