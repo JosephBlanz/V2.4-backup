@@ -14380,3 +14380,86 @@ To https://github.com/JosephBlanz/V2.4-backup.git
 
 Command {update_git_script} finished
 
+Running Command {update_git_script}...:
+cp: -r not specified; omitting directory '/home/pi/printer_data/'
+
+Reinitialized existing Git repository in /home/pi/klipper-backup/.git/
+
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+
+Proceeding with filter-branch...
+
+
+Rewrite 9442439f0e1830dd7bb632d97917ae546a0197e7 (1/10) (0 seconds passed, remaining 0 predicted)    fatal: /.env: '/.env' is outside repository at '/home/pi/klipper-backup/.git-rewrite/t'
+
+index filter failed: git rm -r --cached --ignore-unmatch "$parent_path"/.env
+
+[main fada147] New backup from 04-09-23
+ 48 files changed, 56101 insertions(+)
+ create mode 100644 printer_data/printer_data/.moonraker.uuid
+ create mode 100644 printer_data/printer_data/backup/20230824T192027Z/config/moonraker.conf
+ create mode 120000 printer_data/printer_data/comms/klippy.serial
+ create mode 100644 printer_data/printer_data/config/.moonraker.conf.bkp
+ create mode 100644 printer_data/printer_data/config/MACROS/BACKUP.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/CANCLE_PRINT.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/DUMP_VARIABLES.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/G32.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/GET_VARIABLES.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/OFF.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/PARK.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/PAUSE.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/PRINT_END.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/PRINT_START.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/RESUME.cfg
+ create mode 100644 printer_data/printer_data/config/MACROS/SHUTDOWN.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/ADXL345.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/DUMP_VARIABLES.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/FANs.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/MCUs.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/PROBE.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/QUAD_GANTY_LEVEL.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/SAFE_Z_HOME.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_X.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_Y.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_Z.cfg
+ create mode 100644 printer_data/printer_data/config/PRINTER/TEMPERAUTRE_SENSORs.cfg
+ create mode 100644 printer_data/printer_data/config/crowsnest.conf
+ create mode 120000 printer_data/printer_data/config/mainsail.cfg
+ create mode 100644 printer_data/printer_data/config/moonraker.conf
+ create mode 100644 printer_data/printer_data/config/printer.cfg
+ create mode 100644 printer_data/printer_data/config/shell_command.cfg
+ create mode 100644 printer_data/printer_data/database/data.mdb
+ create mode 100644 printer_data/printer_data/database/lock.mdb
+ create mode 100644 printer_data/printer_data/logs/crowsnest.log
+ create mode 100644 printer_data/printer_data/logs/crowsnest.log.2023-09-04
+ create mode 100644 printer_data/printer_data/logs/klippy.log
+ create mode 100644 printer_data/printer_data/logs/klippy.log.2023-08-24
+ create mode 100644 printer_data/printer_data/logs/klippy.log.2023-09-03
+ create mode 120000 printer_data/printer_data/logs/mainsail-access.log
+ create mode 120000 printer_data/printer_data/logs/mainsail-error.log
+ create mode 100644 printer_data/printer_data/logs/moonraker.log
+ create mode 100644 printer_data/printer_data/logs/moonraker.log.2023-08-24
+ create mode 100644 printer_data/printer_data/logs/moonraker.log.2023-09-03
+ create mode 100644 printer_data/printer_data/moonraker.asvc
+ create mode 100644 printer_data/printer_data/systemd/crowsnest.env
+ create mode 100644 printer_data/printer_data/systemd/klipper.env
+ create mode 100644 printer_data/printer_data/systemd/moonraker.env
+
+To https://github.com/JosephBlanz/V2.4-backup.git
+   4d1f347..fada147  main -> main
+
+Write g-code response
+Traceback (most recent call last):
+  File "/home/pi/klipper/klippy/gcode.py", line 446, in _respond_raw
+    os.write(self.fd, (msg+"\n").encode())
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+Command {update_git_script} finished
+
+Running Command {update_git_script}...:
+cp: -r not specified; omitting directory '/home/pi/printer_data/'
+
