@@ -21,6 +21,7 @@ fi
 while read -r path; do
   file=$(basename "$path")
   cp "$path" "$parent_path/$backup_folder/$file"
+  cp -r "$path" "$parent_path/$backup_folder/$file" 
 done < <(grep 'path_' "$parent_path"/.env | sed 's/^.*=//')
 
 # Git commands
