@@ -14281,3 +14281,80 @@ Command {update_git_script} finished
 Running Command {update_git_script}...:
 cp: -r not specified; omitting directory '/home/pi/printer_data/'
 
+Reinitialized existing Git repository in /home/pi/klipper-backup/.git/
+
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+
+Proceeding with filter-branch...
+
+
+Cannot rewrite branches: You have unstaged changes.
+
+[main 8456d9a] New backup from 04-09-23
+ 53 files changed, 25 insertions(+), 55852 deletions(-)
+ delete mode 100644 printer_data/crowsnest.conf
+ delete mode 120000 printer_data/mainsail.cfg
+ delete mode 100644 printer_data/moonraker.conf
+ delete mode 100644 printer_data/printer.cfg
+ delete mode 100644 printer_data/printer_data/.moonraker.uuid
+ delete mode 100644 printer_data/printer_data/backup/20230824T192027Z/config/moonraker.conf
+ delete mode 120000 printer_data/printer_data/comms/klippy.serial
+ delete mode 100644 printer_data/printer_data/config/.moonraker.conf.bkp
+ delete mode 100644 printer_data/printer_data/config/MACROS/BACKUP.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/CANCLE_PRINT.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/DUMP_VARIABLES.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/G32.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/GET_VARIABLES.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/OFF.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/PARK.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/PAUSE.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/PRINT_END.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/PRINT_START.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/RESUME.cfg
+ delete mode 100644 printer_data/printer_data/config/MACROS/SHUTDOWN.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/ADXL345.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/DUMP_VARIABLES.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/FANs.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/MCUs.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/PROBE.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/QUAD_GANTY_LEVEL.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/SAFE_Z_HOME.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_X.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_Y.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/STEPPER_Z.cfg
+ delete mode 100644 printer_data/printer_data/config/PRINTER/TEMPERAUTRE_SENSORs.cfg
+ delete mode 100644 printer_data/printer_data/config/crowsnest.conf
+ delete mode 120000 printer_data/printer_data/config/mainsail.cfg
+ delete mode 100644 printer_data/printer_data/config/moonraker.conf
+ delete mode 100644 printer_data/printer_data/config/printer.cfg
+ delete mode 100644 printer_data/printer_data/config/shell_command.cfg
+ delete mode 100644 printer_data/printer_data/database/data.mdb
+ delete mode 100644 printer_data/printer_data/database/lock.mdb
+ delete mode 100644 printer_data/printer_data/logs/crowsnest.log
+ delete mode 100644 printer_data/printer_data/logs/crowsnest.log.2023-09-04
+ delete mode 100644 printer_data/printer_data/logs/klippy.log
+ delete mode 100644 printer_data/printer_data/logs/klippy.log.2023-08-24
+ delete mode 100644 printer_data/printer_data/logs/klippy.log.2023-09-03
+ delete mode 120000 printer_data/printer_data/logs/mainsail-access.log
+ delete mode 120000 printer_data/printer_data/logs/mainsail-error.log
+ delete mode 100644 printer_data/printer_data/logs/moonraker.log
+ delete mode 100644 printer_data/printer_data/logs/moonraker.log.2023-08-24
+ delete mode 100644 printer_data/printer_data/logs/moonraker.log.2023-09-03
+ delete mode 100644 printer_data/printer_data/moonraker.asvc
+ delete mode 100644 printer_data/printer_data/systemd/crowsnest.env
+ delete mode 100644 printer_data/printer_data/systemd/klipper.env
+ delete mode 100644 printer_data/printer_data/systemd/moonraker.env
+
+To https://github.com/JosephBlanz/V2.4-backup.git
+   51eb917..8456d9a  main -> main
+
+Command {update_git_script} finished
+
+Running Command {update_git_script}...:
+cp: -r not specified; omitting directory '/home/pi/printer_data/'
+
