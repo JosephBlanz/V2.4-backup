@@ -13,8 +13,8 @@ backup_folder=$(grep 'backup_folder=' "$parent_path"/.env | sed 's/^.*=//')
 cd "$parent_path" || exit
 
 # Check if backup folder exists, create one if it does not
-if [ ! -d "$backup_folder" ]; then
-  mkdir "$backup_folder"
+if [ ! -d "$parent_path/$backup_folder" ]; then
+  mkdir "$parent_path/$backup_folder"
 fi
 
 # Copy important files into backup folder
