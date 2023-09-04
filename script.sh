@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set parent directory path
-parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)
+parent_path=~/klipper-backup/
 
 # Initialize variables from .env file
 github_token=$(grep 'github_token=' "$parent_path"/.env | sed 's/^.*=//')
@@ -13,8 +13,8 @@ backup_folder=$(grep 'backup_folder=' "$parent_path"/.env | sed 's/^.*=//')
 cd "$parent_path" || exit
 
 # Check if backup folder exists, create one if it does not
-if [ ! -d "$backup_folder" ]; then
-  mkdir "$backup_folder"
+if [ ! -d "$parent_path/$backup_folder" ]; then
+  mkdir "$parent_path/$backup_folder"
 fi
 
 # Copy important files into backup folder
