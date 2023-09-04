@@ -15484,3 +15484,116 @@ cp: cannot stat '/home/pi/printer_data/config/macros.cfg': No such file or direc
 
 cp: -r not specified; omitting directory '/home/pi/printer_data/'
 
+Reinitialized existing Git repository in /home/pi/klipper-backup/.git/
+
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+
+Proceeding with filter-branch...
+
+
+Cannot rewrite branches: You have unstaged changes.
+
+[main 1e4352b] New backup from 04-09-23
+ 49 files changed, 281 insertions(+), 1 deletion(-)
+ rename {printer_data => klipper/printer_data/printer_data}/.moonraker.uuid (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/backup/20230824T192027Z/config/moonraker.conf (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/comms/klippy.serial (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/.moonraker.conf.bkp (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/BACKUP.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/CANCLE_PRINT.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/DUMP_VARIABLES.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/G32.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/GET_VARIABLES.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/OFF.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/PARK.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/PAUSE.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/PRINT_END.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/PRINT_START.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/RESUME.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/MACROS/SHUTDOWN.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/ADXL345.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/DUMP_VARIABLES.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/FANs.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/MCUs.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/PROBE.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/QUAD_GANTY_LEVEL.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/SAFE_Z_HOME.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/STEPPER_X.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/STEPPER_Y.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/STEPPER_Z.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/PRINTER/TEMPERAUTRE_SENSORs.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/crowsnest.conf (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/mainsail.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/moonraker.conf (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/printer.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/config/shell_command.cfg (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/database/data.mdb (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/database/lock.mdb (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/crowsnest.log (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/crowsnest.log.2023-09-04 (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/klippy.log (95%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/klippy.log.2023-08-24 (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/klippy.log.2023-09-03 (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/mainsail-access.log (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/mainsail-error.log (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/moonraker.log (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/logs/moonraker.log.2023-08-24 (100%)
+
+ rename {printer_data => klipper/printer_data}/printer_data/logs/moonraker.log.2023-09-03 (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/moonraker.asvc (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/systemd/crowsnest.env (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/systemd/klipper.env (100%)
+ rename {printer_data => klipper/printer_data}/printer_data/systemd/moonraker.env (100%)
+ delete mode 100644 printer_data/printer_data/.moonraker.uuid
+
+To https://github.com/JosephBlanz/V2.4-backup.git
+   8aa64bf..1e4352b  main -> main
+
+Command {update_git_script} finished
+
+Running Command {update_git_script}...:
+cp: '/home/pi/printer_data/config/mainsail.cfg' and '/home/pi/klipper-backup/klipper/mainsail.cfg' are the same file
+
+cp: cannot stat '/home/pi/printer_data/config/timelapse.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/timelapse.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/telegram.conf': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/telegram.conf': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/adxl.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/adxl.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/pa_cal.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/pa_cal.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/GET_PROBE_LIMITS.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/GET_PROBE_LIMITS.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/saved_variables.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/saved_variables.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/pa_flow_calibrate.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/pa_flow_calibrate.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/sounds.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/sounds.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/macros.cfg': No such file or directory
+
+cp: cannot stat '/home/pi/printer_data/config/macros.cfg': No such file or directory
+
+cp: -r not specified; omitting directory '/home/pi/printer_data/'
+
