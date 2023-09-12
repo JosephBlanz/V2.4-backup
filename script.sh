@@ -20,7 +20,7 @@ fi
 # Copy important files into backup folder
 while read -r path; do
   file=$(basename "$path")
-  cp -r x"$path" "$backup_folder/$file"
+  cp -r "$path" "$backup_folder/$file"
 done < <(grep 'path_' "$parent_path"/.env | sed 's/^.*=//')
 
 # Git commands
