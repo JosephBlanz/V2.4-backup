@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Set parent directory path
-parent_path=$(cd "$(dirname "${BASH_SOURCE[0]}")"; pwd -P)
+parent_path=~/klipper-backup/
 
 # Initialize variables from .env file
 github_token=$(grep 'github_token=' "$parent_path"/.env | sed 's/^.*=//')
