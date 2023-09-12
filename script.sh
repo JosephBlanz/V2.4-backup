@@ -13,14 +13,14 @@ backup_folder=$(grep 'backup_folder=' "$parent_path"/.env | sed 's/^.*=//')
 cd "$parent_path" || exit
 
 # Check if backup folder exists, create one if it does not
-#if [ ! -d "$parent_path/$backup_folder" ]; then
-#  mkdir "$parent_path/$backup_folder"
-#fi
+if [ ! -d "$parent_path/$backup_folder" ]; then
+  mkdir "$parent_path/$backup_folder"
+fi
 
 # Copy important files into backup folder
 while read -r path; do
   file=$(basename "$path")
-  cp -r "$path" "$backup_folder/$file"
+  cp -r "$path" "$file"
 done < <(grep 'path_' "$parent_path"/.env | sed 's/^.*=//')
 
 # Git commands
