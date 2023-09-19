@@ -1618,3 +1618,65 @@ Printer is halted
 2023-09-19 20:01:53,849 [app.py:prepare()] - Upload Request Received from 192.168.2.129
 2023-09-19 20:01:53,855 [app.py:post()] - Processing Uploaded File: PARK.cfg
 2023-09-19 20:01:53,867 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.73ms
+2023-09-19 20:25:55,740 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2023-09-19 20:25:55,747 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-09-19 20:25:55,846 [websockets.py:on_close()] - Websocket Closed: ID: 548365819088 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 9.70
+2023-09-19 20:25:55,856 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+history:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 5
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 6
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 3
+overflow_pages: 0
+entries: 8
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2023-09-19 20:25:55,964 [server.py:main()] - Server Shutdown
