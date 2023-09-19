@@ -31755,3 +31755,845 @@ Stats 3477.1: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_std
 Stats 3478.1: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000010 bytes_write=97908 bytes_read=106617 bytes_retransmit=9 bytes_invalid=0 send_seq=5137 receive_seq=5137 retransmit_seq=2 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63999415 SB2240: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000011 bytes_write=30878 bytes_read=68827 bytes_retransmit=0 bytes_invalid=0 send_seq=2686 receive_seq=2686 retransmit_seq=0 srtt=0.001 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63998818 adj=63999410  M8P: temp=36.9 CM4: temp=38.9 SB2240: temp=27.6 heater_bed: target=0 temp=23.8 pwm=0.000 sysload=0.14 cputime=153.781 memavail=3460344 print_time=114.463 buffer_time=0.000 print_stall=0 extruder: target=0 temp=25.9 pwm=0.000
 Stats 3479.1: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000010 bytes_write=97914 bytes_read=106749 bytes_retransmit=9 bytes_invalid=0 send_seq=5138 receive_seq=5138 retransmit_seq=2 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63999414 SB2240: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000011 bytes_write=30884 bytes_read=68944 bytes_retransmit=0 bytes_invalid=0 send_seq=2687 receive_seq=2687 retransmit_seq=0 srtt=0.001 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63998819 adj=63999396  M8P: temp=37.0 CM4: temp=39.4 SB2240: temp=27.4 heater_bed: target=0 temp=23.6 pwm=0.000 sysload=0.14 cputime=153.804 memavail=3460120 print_time=114.463 buffer_time=0.000 print_stall=0 extruder: target=0 temp=25.9 pwm=0.000
 Stats 3480.1: gcodein=0  mcu: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000010 bytes_write=97920 bytes_read=106852 bytes_retransmit=9 bytes_invalid=0 send_seq=5139 receive_seq=5139 retransmit_seq=2 srtt=0.000 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63999415 SB2240: mcu_awake=0.002 mcu_task_avg=0.000014 mcu_task_stddev=0.000011 bytes_write=30890 bytes_read=69047 bytes_retransmit=0 bytes_invalid=0 send_seq=2688 receive_seq=2688 retransmit_seq=0 srtt=0.001 rttvar=0.000 rto=0.025 ready_bytes=0 upcoming_bytes=0 freq=63998822 adj=63999434  M8P: temp=36.9 CM4: temp=38.9 SB2240: temp=27.6 heater_bed: target=0 temp=23.6 pwm=0.000 sysload=0.14 cputime=153.826 memavail=3460120 print_time=114.463 buffer_time=0.000 print_stall=0 extruder: target=0 temp=25.9 pwm=0.000
+Starting Klippy...
+Args: ['/home/pi/klipper/klippy/klippy.py', '/home/pi/printer_data/config/printer.cfg', '-I', '/home/pi/printer_data/comms/klippy.serial', '-l', '/home/pi/printer_data/logs/klippy.log', '-a', '/home/pi/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-275-g8ef0f7d7-dirty'
+Untracked files: klippy/extras/gcode_shell_command.py
+Branch: master
+Remote: origin
+Tracked URL: https://github.com/Klipper3d/klipper
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Start printer at Tue Sep 19 20:26:15 2023 (1695151575.9 24.8)
+===== Config file =====
+[gcode_shell_command hello_world]
+command = echo hello world
+timeout = 2.
+verbose = True
+
+[gcode_macro HELLO_WORLD]
+gcode = 
+	RUN_SHELL_COMMAND CMD=hello_world
+
+[virtual_sdcard]
+path = ~/printer_data/gcodes
+on_error_gcode = CANCEL_PRINT
+
+[pause_resume]
+
+[display_status]
+
+[respond]
+
+[gcode_macro CANCEL_PRINT]
+description = Cancel the actual running print
+rename_existing = BASE_CANCEL_PRINT
+gcode = 
+	SET_IDLE_TIMEOUT TIMEOUT={printer.configfile.settings.idle_timeout.timeout}
+	CLEAR_PAUSE
+	SDCARD_RESET_FILE
+	PRINT_END
+	BASE_CANCEL_PRINT
+
+[gcode_macro PAUSE]
+description = Pause the actual running print
+rename_existing = BASE_PAUSE
+variable_restore_idle_timeout = 0
+gcode = 
+	
+	{% set z = params.Z|default(10)|int %}
+	
+	{% if printer['pause_resume'].is_paused|int == 0 %}
+	SET_GCODE_VARIABLE MACRO=RESUME VARIABLE=zhop VALUE={z}
+	SET_GCODE_VARIABLE MACRO=RESUME VARIABLE=etemp VALUE={printer['extruder'].target}
+	
+	SET_FILAMENT_SENSOR SENSOR=filament_sensor ENABLE=0
+	SAVE_GCODE_STATE NAME=PAUSE
+	BASE_PAUSE
+	{% if (printer.gcode_move.position.z + z) < printer.toolhead.axis_maximum.z %}
+	G91
+	G1 Z{z} F900
+	{% else %}
+	{ action_respond_info("Pause zhop exceeds maximum Z height.") }
+	SET_GCODE_VARIABLE MACRO=RESUME VARIABLE=zhop VALUE=0
+	{% endif %}
+	G90
+	G1 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_minimum.y+5} F6000
+	SAVE_GCODE_STATE NAME=PAUSEPARK
+	M104 S0
+	SET_IDLE_TIMEOUT TIMEOUT=43200
+	{% endif %}
+
+[gcode_macro RESUME]
+description = Resume the actual running print
+rename_existing = BASE_RESUME
+variable_last_extruder_temp = {'restore': False, 'temp': 0}
+gcode = 
+	
+	{% set e = params.E|default(2.5)|int %}
+	
+	{% if printer['pause_resume'].is_paused|int == 1 %}
+	SET_FILAMENT_SENSOR SENSOR=filament_sensor ENABLE=1
+	
+	SET_IDLE_TIMEOUT TIMEOUT={printer.configfile.settings.idle_timeout.timeout}
+	{% if etemp > 0 %}
+	M109 S{etemp|int}
+	{% endif %}
+	RESTORE_GCODE_STATE NAME=PAUSEPARK MOVE=1 MOVE_SPEED=100
+	G91
+	M83
+	{% if printer[printer.toolhead.extruder].temperature >= printer.configfile.settings.extruder.min_extrude_temp %}
+	G1 Z{zhop * -1} E{e} F900
+	{% else %}
+	G1 Z{zhop * -1} F900
+	{% endif %}
+	RESTORE_GCODE_STATE NAME=PAUSE MOVE=1 MOVE_SPEED=60
+	BASE_RESUME
+	{% endif %}
+variable_zhop = 0
+variable_etemp = 0
+
+[gcode_macro SET_PAUSE_NEXT_LAYER]
+description = Enable a pause if the next layer is reached
+gcode = 
+	{% set pause_next_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_next_layer %}
+	{% set ENABLE = params.ENABLE|default(1)|int != 0 %}
+	{% set MACRO = params.MACRO|default(pause_next_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_next_layer VALUE="{{ 'enable': ENABLE, 'call': MACRO }}"
+
+[gcode_macro SET_PAUSE_AT_LAYER]
+description = Enable/disable a pause if a given layer number is reached
+gcode = 
+	{% set pause_at_layer = printer['gcode_macro SET_PRINT_STATS_INFO'].pause_at_layer %}
+	{% set ENABLE = params.ENABLE|int != 0 if params.ENABLE is defined
+	else params.LAYER is defined %}
+	{% set LAYER = params.LAYER|default(pause_at_layer.layer)|int %}
+	{% set MACRO = params.MACRO|default(pause_at_layer.call, True) %}
+	SET_GCODE_VARIABLE MACRO=SET_PRINT_STATS_INFO VARIABLE=pause_at_layer VALUE="{{ 'enable': ENABLE, 'layer': LAYER, 'call': MACRO }}"
+
+[gcode_macro SET_PRINT_STATS_INFO]
+rename_existing = SET_PRINT_STATS_INFO_BASE
+description = Overwrite, to get pause_next_layer and pause_at_layer feature
+variable_pause_next_layer = { 'enable': False, 'call': "PAUSE" }
+variable_pause_at_layer = { 'enable': False, 'layer': 0, 'call': "PAUSE" }
+gcode = 
+	{% if pause_next_layer.enable %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_next_layer" % pause_next_layer.call}'
+	{pause_next_layer.call}
+	SET_PAUSE_NEXT_LAYER ENABLE=0
+	{% elif pause_at_layer.enable and params.CURRENT_LAYER is defined and params.CURRENT_LAYER|int == pause_at_layer.layer %}
+	RESPOND TYPE=echo MSG='{"%s, forced by pause_at_layer [%d]" % (pause_at_layer.call, pause_at_layer.layer)}'
+	{pause_at_layer.call}
+	SET_PAUSE_AT_LAYER ENABLE=0
+	{% endif %}
+	SET_PRINT_STATS_INFO_BASE {rawparams}
+
+[gcode_macro _TOOLHEAD_PARK_PAUSE_CANCEL]
+description = Helper: park toolhead used in PAUSE and CANCEL_PRINT
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set velocity = printer.configfile.settings.pause_resume.recover_velocity %}
+	{% set use_custom     = client.use_custom_pos|default(false)|lower == 'true' %}
+	{% set custom_park_x  = client.custom_park_x|default(0.0) %}
+	{% set custom_park_y  = client.custom_park_y|default(0.0) %}
+	{% set park_dz        = client.custom_park_dz|default(2.0)|abs %}
+	{% set sp_hop         = client.speed_hop|default(15) * 60 %}
+	{% set sp_move        = client.speed_move|default(velocity) * 60 %}
+	
+	{% set origin    = printer.gcode_move.homing_origin %}
+	{% set act       = printer.gcode_move.gcode_position %}
+	{% set max       = printer.toolhead.axis_maximum %}
+	{% set cone      = printer.toolhead.cone_start_z|default(max.z) %}
+	{% set round_bed = True if printer.configfile.settings.printer.kinematics is in ['delta','polar','rotary_delta','winch']
+	else False %}
+	
+	{% set z_min = params.Z_MIN|default(0)|float %}
+	{% set z_park = [[(act.z + park_dz), z_min]|max, (max.z - origin.z)]|min %}
+	{% set x_park = params.X       if params.X is defined
+	else custom_park_x  if use_custom
+	else 0.0            if round_bed
+	else (max.x - 5.0) %}
+	{% set y_park = params.Y       if params.Y is defined
+	else custom_park_y  if use_custom
+	else (max.y - 5.0)  if round_bed and z_park < cone
+	else 0.0            if round_bed
+	else (max.y - 5.0) %}
+	
+	_CLIENT_RETRACT
+	{% if "xyz" in printer.toolhead.homed_axes %}
+	G90
+	G1 Z{z_park} F{sp_hop}
+	G1 X{x_park} Y{y_park} F{sp_move}
+	{% if not printer.gcode_move.absolute_coordinates %} G91 {% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Printer not homed'
+	{% endif %}
+
+[gcode_macro _CLIENT_EXTRUDE]
+description = Extrudes, if the extruder is hot enough
+gcode = 
+	
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set use_fw_retract = (client.use_fw_retract|default(false)|lower == 'true') and (printer.firmware_retraction is defined) %}
+	{% set length = params.LENGTH|default(client.unretract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_unretract)|default(35) %}
+	{% set absolute_extrude = printer.gcode_move.absolute_extrude %}
+	
+	{% if printer.toolhead.extruder != '' %}
+	{% if printer[printer.toolhead.extruder].can_extrude %}
+	{% if use_fw_retract %}
+	{% if length < 0 %}
+	G10
+	{% else %}
+	G11
+	{% endif %}
+	{% else %}
+	M83
+	G1 E{length} F{(speed|float|abs) * 60}
+	{% if absolute_extrude %}
+	M82
+	{% endif %}
+	{% endif %}
+	{% else %}
+	RESPOND TYPE=echo MSG='Extruder not hot enough'
+	{% endif %}
+	{% endif %}
+
+[gcode_macro _CLIENT_RETRACT]
+description = Retracts, if the extruder is hot enough
+gcode = 
+	{% set client = printer['gcode_macro _CLIENT_VARIABLE']|default({}) %}
+	{% set length = params.LENGTH|default(client.retract)|default(1.0)|float %}
+	{% set speed = params.SPEED|default(client.speed_retract)|default(35) %}
+	
+	_CLIENT_EXTRUDE LENGTH=-{length|float|abs} SPEED={speed|float|abs}
+
+[adxl345]
+cs_pin = SB2240: PB12
+spi_software_sclk_pin = SB2240: PB10
+spi_software_mosi_pin = SB2240: PB11
+spi_software_miso_pin = SB2240: PB2
+axes_map = z,-y,x
+
+[resonance_tester]
+probe_points = 100, 100, 20
+accel_chip = adxl345
+
+[fan]
+pin = SB2240: PA1
+kick_start_time = 0.5
+off_below = 0.09
+
+[heater_fan hotend_fan]
+pin = SB2240: PA0
+max_power = 1.0
+kick_start_time = 0.5
+heater = extruder
+heater_temp = 50.0
+
+[mcu]
+serial = /dev/serial/by-id/usb-Klipper_stm32g0b1xx_0F002A000B504B4633373520-if00
+restart_method = command
+
+[mcu SB2240]
+canbus_uuid = 1d98beae65e3
+
+[probe]
+activate_gcode = 
+	{% set PROBE_TEMP = 150 %}
+	{% set MAX_TEMP = PROBE_TEMP + 5 %}
+	{% set ACTUAL_TEMP = printer.extruder.temperature %}
+	{% set TARGET_TEMP = printer.extruder.target %}
+	
+	{% if TARGET_TEMP > PROBE_TEMP %}
+	{ action_respond_info('Extruder temperature target of %.1fC is too high, lowering to %.1fC' % (TARGET_TEMP, PROBE_TEMP)) }
+	M109 S{ PROBE_TEMP }
+	{% else %}
+	
+	{% if ACTUAL_TEMP > MAX_TEMP %}
+	{ action_respond_info('Extruder temperature %.1fC is still too high, waiting until below %.1fC' % (ACTUAL_TEMP, MAX_TEMP)) }
+	TEMPERATURE_WAIT SENSOR=extruder MAXIMUM={ MAX_TEMP }
+	{% endif %}
+	{% endif %}
+pin = !SB2240: PC13
+x_offset = 0
+y_offset = 0
+z_offset = 0
+speed = 20
+samples = 3
+samples_result = median
+sample_retract_dist = 1.0
+samples_tolerance = 0.006
+samples_tolerance_retries = 20
+lift_speed = 100
+
+[quad_gantry_level]
+gantry_corners = 
+	-60,-10
+	410,420
+points = 
+	50,25
+	50,275
+	300,275
+	300,25
+speed = 400
+horizontal_move_z = 5
+retries = 5
+retry_tolerance = 0.0075
+max_adjust = 10
+
+[safe_z_home]
+home_xy_position = 175,175
+speed = 150
+z_hop = 10
+
+[stepper_x]
+step_pin = PE2
+dir_pin = PB4
+enable_pin = !PC11
+microsteps = 64
+rotation_distance = 40
+full_steps_per_rotation = 200
+endstop_pin = ^PF3
+position_min = 0
+position_endstop = 350
+position_max = 350
+homing_speed = 100
+homing_retract_dist = 5
+homing_positive_dir = true
+
+[tmc2209 stepper_x]
+uart_pin = PC10
+interpolate = True
+run_current = 0.8
+stealthchop_threshold = 0
+
+[stepper_y]
+step_pin = PF12
+dir_pin = PF11
+enable_pin = !PB3
+microsteps = 64
+rotation_distance = 40
+endstop_pin = ^PF4
+full_steps_per_rotation = 200
+position_min = 0
+position_endstop = 350
+position_max = 350
+homing_speed = 100
+homing_retract_dist = 5
+homing_positive_dir = true
+
+[tmc2209 stepper_y]
+uart_pin = PF13
+interpolate = True
+run_current = 0.8
+stealthchop_threshold = 0
+
+[stepper_z]
+step_pin = PD7
+dir_pin = PD6
+enable_pin = !PF10
+rotation_distance = 40
+gear_ratio = 80:16
+microsteps = 128
+endstop_pin = probe:z_virtual_endstop
+position_max = 340
+position_min = -5
+homing_speed = 8
+second_homing_speed = 3
+homing_retract_dist = 3
+
+[tmc2209 stepper_z]
+uart_pin = PF9
+interpolate = true
+run_current = 0.6
+stealthchop_threshold = 0
+
+[stepper_z1]
+step_pin = PC9
+dir_pin = !PC8
+enable_pin = !PD1
+rotation_distance = 40
+gear_ratio = 80:16
+microsteps = 128
+
+[tmc2209 stepper_z1]
+uart_pin = PD0
+interpolate = true
+run_current = 0.6
+stealthchop_threshold = 0
+
+[stepper_z2]
+step_pin = PA10
+dir_pin = PD15
+enable_pin = !PA15
+rotation_distance = 40
+gear_ratio = 80:16
+microsteps = 128
+
+[tmc2209 stepper_z2]
+uart_pin = PF8
+interpolate = true
+run_current = 0.6
+stealthchop_threshold = 0
+
+[stepper_z3]
+step_pin = PD12
+dir_pin = !PD11
+enable_pin = !PD14
+rotation_distance = 40
+gear_ratio = 80:16
+microsteps = 128
+
+[tmc2209 stepper_z3]
+uart_pin = PD13
+interpolate = true
+run_current = 0.6
+stealthchop_threshold = 0
+
+[temperature_sensor M8P]
+sensor_type = temperature_mcu
+min_temp = 0
+max_temp = 100
+
+[temperature_sensor CM4]
+sensor_type = temperature_host
+min_temp = 10
+max_temp = 100
+
+[temperature_sensor SB2240]
+sensor_type = temperature_mcu
+sensor_mcu = SB2240
+min_temp = 0
+max_temp = 100
+
+[gcode_macro update_git]
+gcode = 
+	RUN_SHELL_COMMAND CMD=update_git_script
+
+[gcode_shell_command update_git_script]
+command = bash /home/pi/klipper-backup/script.sh
+timeout = 90.0
+verbose = True
+
+[gcode_macro DUMP_VARIABLES]
+gcode = 
+	{% set filter_name = params.NAME|default('')|string|lower %}
+	{% set filter_value = params.VALUE|default('')|string|lower %}
+	{% set show_cfg = params.SHOW_CFG|default(0)|int %}
+	
+	{% set out = [] %}
+	
+	{% for key1 in printer %}
+	{% for key2 in printer[key1] %}
+	{% if (show_cfg or not (key1|lower == 'configfile' and key2|lower in ['config', 'settings'])) and (filter_name in key1|lower or filter_name in key2|lower) and filter_value in printer[key1][key2]|string|lower %}
+	{% set dummy = out.append("printer['%s'].%s = %s" % (key1, key2, printer[key1][key2])) %}
+	{% endif %}
+	{% else %}
+	{% if filter_name in key1|lower and filter_value in printer[key1]|string|lower %}
+	{% set dummy = out.append("printer['%s'] = %s" % (key1, printer[key1])) %}
+	{% endif %}
+	{% endfor %}
+	{% endfor %}
+	
+	{action_respond_info(out|join("\n"))}
+
+[gcode_macro G32]
+gcode = 
+	BED_MESH_CLEAR
+	G28
+	QUAD_GANTRY_LEVEL
+	G28
+
+[gcode_macro GET_VARIABLE]
+gcode = 
+	{% set names = (params.NAME).split('.')|list %}
+	{% set join = (params.JOIN)|default(1)|int %}
+	
+	{% set _dummy0 = namespace( break = 0 ) %}
+	{% set _dummy1 = namespace( out = printer[names|first] ) %}
+	
+	{% for name in names if _dummy0.break == 0 %}
+	{% if loop.index > 1 %}
+	{% if name in _dummy1.out %}
+	{% set _dummy1.out = _dummy1.out[name] %}
+	{% elif name[0] in '0123456789' and _dummy1.out is iterable and _dummy1.out is not string and _dummy1.out is not mapping and _dummy1.out|length > name[0]|int %}
+	{% set _dummy1.out = _dummy1.out[name|int] %}
+	{% else %}
+	{% set _dummy0.break = loop.index0 %}
+	{% endif %}
+	{% endif %}
+	{% endfor %}
+	
+	{% if _dummy1.out is boolean %}
+	{ action_respond_info('Type: boolean') }
+	{% elif _dummy1.out is float %}
+	{ action_respond_info('Type: float') }
+	{% elif _dummy1.out is integer %}
+	{ action_respond_info('Type: integer') }
+	{% elif _dummy1.out is mapping %}
+	{ action_respond_info('Type: mapping') }
+	{% elif _dummy1.out is string %}
+	{ action_respond_info('Type: string') }
+	{% elif _dummy1.out is iterable %}
+	{ action_respond_info('Type: iterable') }
+	{% elif _dummy1.out is none %}
+	{ action_respond_info('Type: none') }
+	{% elif _dummy1.out is undefined %}
+	{ action_respond_info('Type: undefined') }
+	{% elif _dummy1.out is callable %}
+	{ action_respond_info('Type: callable') }
+	{% else %}
+	{ action_respond_info('Type: unknown') }
+	{% endif %}
+	
+	{% if join and _dummy1.out is iterable and _dummy1.out is not string and _dummy1.out is not mapping %}
+	{ action_respond_info('%s' % _dummy1.out|join("\n")) }
+	{% else %}
+	{ action_respond_info('%s' % _dummy1.out) }
+	{% endif %}
+	
+	{% if _dummy0.break != 0 %}
+	{ action_respond_info('"printer.%s" does not contain "%s"!' % (names[0:_dummy0.break]|join('.'), names[_dummy0.break])) }
+	{% endif %}
+
+[neopixel sb_leds]
+pin = SB2240:PD3
+chain_count = 3
+color_order = GRBW
+initial_red = 1.0
+initial_green = 0.0
+initial_blue = 1.0
+initial_white = 0.0
+
+[gcode_macro _sb_vars]
+variable_colors = {
+	'logo': {
+	'busy': {'r': 0.4, 'g': 0.0, 'b': 0.0, 'w': 0.0},
+	'cleaning': {'r': 0.0, 'g': 0.02, 'b': 0.5, 'w': 0.0},
+	'calibrating_z': {'r': 0.8, 'g': 0., 'b': 0.35, 'w': 0.0},
+	'heating': {'r': 0.3, 'g': 0.18, 'b': 0.0, 'w': 0.0},
+	'homing': {'r': 0.0, 'g': 0.6, 'b': 0.2, 'w': 0.0},
+	'leveling': {'r': 0.5, 'g': 0.1, 'b': 0.4, 'w': 0.0},
+	'meshing': {'r': 0.2, 'g': 1.0, 'b': 0.0, 'w': 0.0},
+	'off': {'r': 0.0, 'g': 0.0, 'b': 0.0, 'w': 0.0},
+	'printing': {'r': 1.0, 'g': 0.0, 'b': 0.0, 'w': 0.0},
+	'standby': {'r': 0.01, 'g': 0.01, 'b': 0.01, 'w': 0.1},
+	},
+	'nozzle': {
+	'heating': {'r': 0.8, 'g': 0.35, 'b': 0.0, 'w':0.0},
+	'off': {'r': 0.0, 'g': 0.0, 'b': 0.0, 'w': 0.0},
+	'on': {'r': 0.8, 'g': 0.8, 'b': 0.8, 'w':1.0},
+	'standby': {'r': 0.6, 'g': 0.0, 'b': 0.0, 'w':0.0},
+	},
+	'thermal': {
+	'hot': {'r': 1.0, 'g': 0.0, 'b': 0.0, 'w': 0.0},
+	'cold': {'r': 0.3, 'g': 0.0, 'b': 0.3, 'w': 0.0}
+	}
+	}
+variable_logo_led_name = "sb_leds"
+variable_logo_idx = "1"
+variable_nozzle_led_name = "sb_leds"
+variable_nozzle_idx = "2,3"
+gcode = 
+
+[gcode_macro _set_sb_leds]
+gcode = 
+	{% set red = params.RED|default(0)|float %}
+	{% set green = params.GREEN|default(0)|float %}
+	{% set blue = params.BLUE|default(0)|float %}
+	{% set white = params.WHITE|default(0)|float %}
+	{% set led = params.LED|string %}
+	{% set idx = (params.IDX|string).split(',') %}
+	{% set transmit_last = params.TRANSMIT|default(1) %}
+	
+	{% for led_index in idx %}
+	{% set transmit=transmit_last if loop.last else 0 %}
+	set_led led={led} red={red} green={green} blue={blue} white={white} index={led_index} transmit={transmit}
+	{% endfor %}
+
+[gcode_macro _set_sb_leds_by_name]
+gcode = 
+	{% set leds_name = params.LEDS %}
+	{% set color_name = params.COLOR %}
+	{% set color = printer["gcode_macro _sb_vars"].colors[leds_name][color_name] %}
+	{% set led = printer["gcode_macro _sb_vars"][leds_name + "_led_name"] %}
+	{% set idx = printer["gcode_macro _sb_vars"][leds_name + "_idx"] %}
+	{% set transmit = params.TRANSMIT|default(1) %}
+	
+	_set_sb_leds led={led} red={color.r} green={color.g} blue={color.b} white={color.w} idx="{idx}" transmit={transmit}
+
+[gcode_macro _set_logo_leds]
+gcode = 
+	{% set red = params.RED|default(0)|float %}
+	{% set green = params.GREEN|default(0)|float %}
+	{% set blue = params.BLUE|default(0)|float %}
+	{% set white = params.WHITE|default(0)|float %}
+	{% set led = printer["gcode_macro _sb_vars"].logo_led_name %}
+	{% set idx = printer["gcode_macro _sb_vars"].logo_idx %}
+	{% set transmit=params.TRANSMIT|default(1) %}
+	
+	_set_sb_leds led={led} red={red} green={green} blue={blue} white={white} idx="{idx}" transmit={transmit}
+
+[gcode_macro _set_nozzle_leds]
+gcode = 
+	{% set red = params.RED|default(0)|float %}
+	{% set green = params.GREEN|default(0)|float %}
+	{% set blue = params.BLUE|default(0)|float %}
+	{% set white = params.WHITE|default(0)|float %}
+	{% set led = printer["gcode_macro _sb_vars"].nozzle_led_name %}
+	{% set idx = printer["gcode_macro _sb_vars"].nozzle_idx %}
+	{% set transmit=params.TRANSMIT|default(1) %}
+	
+	_set_sb_leds led={led} red={red} green={green} blue={blue} white={white} idx="{idx}" transmit={transmit}
+
+[gcode_macro set_logo_leds_off]
+gcode = 
+	{% set transmit=params.TRANSMIT|default(1) %}
+	_set_logo_leds red=0 blue=0 green=0 white=0 transmit={transmit}
+
+[gcode_macro set_nozzle_leds_on]
+gcode = 
+	{% set transmit=params.TRANSMIT|default(1) %}
+	_set_sb_leds_by_name leds="nozzle" color="on" transmit={transmit}
+
+[gcode_macro set_nozzle_leds_off]
+gcode = 
+	{% set transmit=params.TRANSMIT|default(1) %}
+	_set_sb_leds_by_name leds="nozzle" color="off" transmit={transmit}
+
+[gcode_macro status_off]
+gcode = 
+	set_logo_leds_off transmit=0
+	set_nozzle_leds_off
+
+[gcode_macro status_ready]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="standby" transmit=0
+	_set_sb_leds_by_name leds="nozzle" color="standby" transmit=1
+
+[gcode_macro status_busy]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="busy" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_heating]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="heating" transmit=0
+	_set_sb_leds_by_name leds="nozzle" color="heating" transmit=1
+
+[gcode_macro status_leveling]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="leveling" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_homing]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="homing" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_cleaning]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="cleaning" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_meshing]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="meshing" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_calibrating_z]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="calibrating_z" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro status_printing]
+gcode = 
+	_set_sb_leds_by_name leds="logo" color="printing" transmit=0
+	set_nozzle_leds_on
+
+[gcode_macro OFF]
+gcode = 
+	M84
+	TURN_OFF_HEATERS
+	M107
+
+[gcode_macro PARKFRONT]
+gcode = 
+	{% if "xyz" not in printer.toolhead.homed_axes %}
+	G28
+	{% endif %}
+	SAVE_GCODE_STATE NAME=PARKFRONT
+	G90
+	G0 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_minimum.y+5} Z{printer.toolhead.axis_maximum.z/2} F12000
+	RESTORE_GCODE_STATE NAME=PARKFRONT
+
+[gcode_macro PARKFRONTLOW]
+gcode = 
+	{% if "xyz" not in printer.toolhead.homed_axes %}
+	G28
+	{% endif %}
+	SAVE_GCODE_STATE NAME=PARKFRONT
+	G90
+	G0 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_minimum.y+5} Z20 F12000
+	RESTORE_GCODE_STATE NAME=PARKFRONT
+
+[gcode_macro PARKREAR]
+gcode = 
+	{% if "xyz" not in printer.toolhead.homed_axes %}
+	G28
+	{% endif %}
+	SAVE_GCODE_STATE NAME=PARKREAR
+	G90
+	G0 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_maximum.y-10} Z{printer.toolhead.axis_maximum.z/2} F12000
+	RESTORE_GCODE_STATE NAME=PARKREAR
+
+[gcode_macro PARKCENTER]
+gcode = 
+	{% if "xyz" not in printer.toolhead.homed_axes %}
+	G28
+	{% endif %}
+	SAVE_GCODE_STATE NAME=PARKCENTER
+	G90
+	G0 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_maximum.y/2} Z{printer.toolhead.axis_maximum.z/2} F12000
+	RESTORE_GCODE_STATE NAME=PARKCENTER
+
+[gcode_macro PARKBED]
+gcode = 
+	{% if "xyz" not in printer.toolhead.homed_axes %}
+	G28
+	{% endif %}
+	SAVE_GCODE_STATE NAME=PARKBED
+	G90
+	G0 X{printer.toolhead.axis_maximum.x/2} Y{printer.toolhead.axis_maximum.y/2} Z15 F12000
+	RESTORE_GCODE_STATE NAME=PARKBED
+
+[gcode_macro PRINT_END]
+gcode = 
+	M400
+	G92 E0
+	G1 E-10.0 F3600
+	G91
+	G0 Z1.00 X20.0 Y20.0 F20000
+	TURN_OFF_HEATERS
+	M107
+	G1 Z2 F3000
+	G90
+	G0  X125 Y250 F3600
+	BED_MESH_CLEAR
+
+[gcode_macro PRINT_START]
+gcode = 
+	G32
+	G1 Z20 F3000
+
+[gcode_macro SHUTDOWN]
+gcode = 
+	
+	OFF
+	{action_respond_info('action:poweroff')}
+	{action_call_remote_method("shutdown_machine")}
+
+[printer]
+kinematics = corexy
+max_velocity = 300
+max_accel = 3000
+max_z_velocity = 15
+max_z_accel = 350
+square_corner_velocity = 5.0
+
+[idle_timeout]
+timeout = 1800
+
+[extruder]
+step_pin = SB2240: PD0
+dir_pin = !SB2240: PD1
+enable_pin = !SB2240: PD2
+rotation_distance = 22.6789511
+gear_ratio = 50:10
+microsteps = 16
+full_steps_per_rotation = 200
+nozzle_diameter = 0.400
+filament_diameter = 1.750
+heater_pin = SB2240: PB13
+sensor_type = EPCOS 100K B57560G104F
+sensor_pin = SB2240: PA3
+min_temp = 0
+max_temp = 250
+min_extrude_temp = 190
+control = pid
+pid_kp = 26.213
+pid_ki = 1.304
+pid_kd = 131.721
+
+[tmc2240 extruder]
+cs_pin = SB2240: PA15
+spi_software_sclk_pin = SB2240: PB10
+spi_software_mosi_pin = SB2240: PB11
+spi_software_miso_pin = SB2240: PB2
+driver_tpfd = 0
+run_current = 0.4
+stealthchop_threshold = 0
+
+[heater_bed]
+heater_pin = PB5
+sensor_type = Generic 3950
+sensor_pin = PA0
+max_power = 1
+min_temp = 0
+max_temp = 120
+control = pid
+pid_kp = 58.437
+pid_ki = 2.347
+pid_kd = 363.769
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PE9, EXP1_2=PE10,
+	EXP1_3=PE11, EXP1_4=PE12,
+	EXP1_5=PE13, EXP1_6=PE14,
+	EXP1_7=PE15, EXP1_8=PB10,
+	EXP1_9=<GND>, EXP1_10=<5V>,
+	
+	
+	EXP2_1=PB14, EXP2_2=PB13,
+	EXP2_3=PF7, EXP2_4=PB12,
+	EXP2_5=PE7, EXP2_6=PB11,
+	EXP2_7=PE8, EXP2_8=<RST>,
+	EXP2_9=<GND>, EXP2_10=PC5
+=======================
+Extruder max_extrude_ratio=0.266081
+mcu 'mcu': Starting serial connect
+mcu 'mcu': got {'oid': 17, 'next_clock': 957832192, 'value': 7619, '#name': 'analog_in_state', '#sent_time': 26.04742291, '#receive_time': 26.071647262}
+mcu 'mcu': got {'oid': 18, 'next_clock': 958472192, 'value': 31357, '#name': 'analog_in_state', '#sent_time': 26.04742291, '#receive_time': 26.081710391}
+mcu 'mcu': got {'oid': 17, 'next_clock': 977032192, 'value': 7620, '#name': 'analog_in_state', '#sent_time': 26.353104521, '#receive_time': 26.371605521}
+mcu 'mcu': got {'oid': 18, 'next_clock': 977672192, 'value': 31349, '#name': 'analog_in_state', '#sent_time': 26.353104521, '#receive_time': 26.381612688}
+Loaded MCU 'mcu' 112 commands (v0.11.0-271-g5f990f93 / gcc: (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision 273027] binutils: (2.35.2-2+14+b2) 2.35.2)
+MCU 'mcu' config: ADC_MAX=4095 BUS_PINS_i2c1_PA9_PA10=PA9,PA10 BUS_PINS_i2c1_PB6_PB7=PB6,PB7 BUS_PINS_i2c1_PB8_PB9=PB8,PB9 BUS_PINS_i2c2_PB10_PB11=PB10,PB11 BUS_PINS_i2c2_PB13_PB14=PB13,PB14 BUS_PINS_i2c3_PB3_PB4=PB3,PB4 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi3=PB4,PB5,PB3 CLOCK_FREQ=64000000 MCU=stm32g0b1xx PWM_MAX=255 RESERVE_PINS_USB=PA11,PA12 RESERVE_PINS_crystal=PF0,PF1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+mcu 'mcu': got {'oid': 17, 'next_clock': 996232192, 'value': 7626, '#name': 'analog_in_state', '#sent_time': 26.454546243, '#receive_time': 26.671675076}
+mcu 'mcu': got {'oid': 18, 'next_clock': 996872192, 'value': 31353, '#name': 'analog_in_state', '#sent_time': 26.454546243, '#receive_time': 26.681637873}
+mcu 'SB2240': Starting CAN connect
+Created a socket
+mcu 'mcu': got {'oid': 17, 'next_clock': 1015432192, 'value': 7623, '#name': 'analog_in_state', '#sent_time': 26.82827015, '#receive_time': 26.971655965}
+mcu 'mcu': got {'oid': 18, 'next_clock': 1016072192, 'value': 31356, '#name': 'analog_in_state', '#sent_time': 26.82827015, '#receive_time': 26.98163265}
+mcu 'SB2240': got {'oid': 9, 'next_clock': 1028476208, 'value': 7516, '#name': 'analog_in_state', '#sent_time': 27.176818946, '#receive_time': 27.208017909}
+mcu 'SB2240': got {'oid': 10, 'next_clock': 1029116208, 'value': 31232, '#name': 'analog_in_state', '#sent_time': 27.176818946, '#receive_time': 27.218012743}
+mcu 'mcu': got {'oid': 17, 'next_clock': 1034632192, 'value': 7622, '#name': 'analog_in_state', '#sent_time': 26.82827015, '#receive_time': 27.271711669}
+mcu 'mcu': got {'oid': 18, 'next_clock': 1035272192, 'value': 31360, '#name': 'analog_in_state', '#sent_time': 26.82827015, '#receive_time': 27.281659057}
+Loaded MCU 'SB2240' 114 commands (v0.11.0-271-g5f990f93 / gcc: (15:8-2019-q3-1+b1) 8.3.1 20190703 (release) [gcc-8-branch revision 273027] binutils: (2.35.2-2+14+b2) 2.35.2)
+MCU 'SB2240' config: ADC_MAX=4095 BUS_PINS_i2c1_PA9_PA10=PA9,PA10 BUS_PINS_i2c1_PB6_PB7=PB6,PB7 BUS_PINS_i2c1_PB8_PB9=PB8,PB9 BUS_PINS_i2c2_PB10_PB11=PB10,PB11 BUS_PINS_i2c2_PB13_PB14=PB13,PB14 BUS_PINS_i2c3_PB3_PB4=PB3,PB4 BUS_PINS_spi1=PA6,PA7,PA5 BUS_PINS_spi1a=PB4,PB5,PB3 BUS_PINS_spi2=PB14,PB15,PB13 BUS_PINS_spi2a=PC2,PC3,PB10 BUS_PINS_spi3=PB4,PB5,PB3 CANBUS_FREQUENCY=1000000 CLOCK_FREQ=64000000 MCU=stm32g0b1xx PWM_MAX=255 RECEIVE_WINDOW=192 RESERVE_PINS_CAN=PB0,PB1 RESERVE_PINS_crystal=PF0,PF1 STATS_SUMSQ_BASE=256 STEPPER_BOTH_EDGE=1
+mcu_temperature 'mcu' nominal base=-267.126437 slope=1294.396552
+mcu_temperature 'SB2240' nominal base=-268.567335 slope=1290.687679
+Configured MCU 'mcu' (1024 moves)
+Configured MCU 'SB2240' (1024 moves)
+mcu 'SB2240': got {'oid': 1, 'clock': 1021841379, 'query_ticks': 1941, 'next_sequence': 0, 'buffered': 0, 'fifo': 0, 'limit_count': 0, '#name': 'adxl345_status', '#sent_time': 27.396995186999998, '#receive_time': 27.399384057}
+Starting heater checks for heater_bed
+Starting heater checks for extruder
+webhooks client 548187955648: New connection
+webhooks client 548187955648: Client info {'program': 'Moonraker', 'version': 'v0.8.0-139-g3d9052d'}
+webhooks: registering remote method 'shutdown_machine' for connection id: 548187955648
+webhooks: registering remote method 'reboot_machine' for connection id: 548187955648
+webhooks: registering remote method 'pause_job_queue' for connection id: 548187955648
+webhooks: registering remote method 'start_job_queue' for connection id: 548187955648
