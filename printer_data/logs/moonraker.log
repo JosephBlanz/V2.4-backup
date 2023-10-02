@@ -2654,3 +2654,224 @@ Repo Warnings:
 2023-10-02 22:40:13,257 [app.py:prepare()] - Upload Request Received from 192.168.2.129
 2023-10-02 22:40:13,262 [app.py:post()] - Processing Uploaded File: test
 2023-10-02 22:40:13,274 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 18.69ms
+2023-10-02 22:48:27,368 [app.py:log_request()] - 101 GET /websocket (192.168.2.129) [_TRUSTED_USER_] 6.32ms
+2023-10-02 22:48:27,370 [websockets.py:open()] - Websocket Opened: ID: 547923471856, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko), Host Name: 192.168.2.173
+2023-10-02 22:48:27,375 [websockets.py:_handle_identify()] - Websocket 547923471856 Client Identified - Name: mainsail, Version: 2.7.1, Type: web
+2023-10-02 22:48:37,839 [websockets.py:on_close()] - Websocket Closed: ID: 547923471856 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 0.47
+2023-10-02 22:48:38,214 [app.py:log_request()] - 101 GET /websocket (192.168.2.129) [_TRUSTED_USER_] 6.49ms
+2023-10-02 22:48:38,215 [websockets.py:open()] - Websocket Opened: ID: 547887743472, Proxied: True, User Agent: BBL-Slicer/v01.07.04.52 (dark) Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko), Host Name: 192.168.2.173
+2023-10-02 22:48:38,219 [websockets.py:_handle_identify()] - Websocket 547887743472 Client Identified - Name: mainsail, Version: 2.7.1, Type: web
+2023-10-02 22:53:14,569 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 22:53:14,581 [app.py:post()] - Processing Uploaded File: PRINT_START.cfg
+2023-10-02 22:53:14,595 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 28.95ms
+2023-10-02 22:53:15,663 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 22:53:16,926 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 22:53:19,476 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 22:53:19,478 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 22:53:19,727 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 22:53:20,015 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 22:53:20,737 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 22:55:18,868 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 22:55:18,873 [app.py:post()] - Processing Uploaded File: CANCLE_PRINT.cfg
+2023-10-02 22:55:18,884 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 18.16ms
+2023-10-02 22:55:36,918 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 22:55:36,928 [app.py:post()] - Processing Uploaded File: RESUME.cfg
+2023-10-02 22:55:36,940 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 25.24ms
+2023-10-02 22:55:55,083 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 22:55:55,088 [app.py:post()] - Processing Uploaded File: PAUSE.cfg
+2023-10-02 22:55:55,102 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.84ms
+2023-10-02 23:05:35,881 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:05:35,888 [app.py:post()] - Processing Uploaded File: NozzleClean.cfg
+2023-10-02 23:05:35,902 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 23.42ms
+2023-10-02 23:08:28,569 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:08:28,575 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:08:28,591 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 24.94ms
+2023-10-02 23:08:29,646 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:08:30,905 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:08:33,550 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:08:33,552 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:08:33,801 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:08:34,122 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:08:34,813 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:09:25,431 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:09:25,435 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:09:25,442 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 11.69ms
+2023-10-02 23:09:26,493 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:09:27,753 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:09:30,348 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:09:30,352 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:09:30,599 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:09:30,873 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:09:31,611 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:16:21,445 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:16:21,450 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:16:21,463 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 20.84ms
+2023-10-02 23:16:22,524 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:16:23,787 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:16:26,355 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:16:26,358 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:16:26,607 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:16:26,868 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:16:27,868 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:16:56,621 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:16:56,628 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:16:56,642 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 24.22ms
+2023-10-02 23:16:57,702 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:16:58,963 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:17:01,551 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:17:01,555 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:17:01,802 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:17:02,065 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:17:03,065 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:17:20,998 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 179.000 352.000 10.000 [0.000]'}
+2023-10-02 23:18:26,304 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:18:26,314 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:18:26,332 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 31.78ms
+2023-10-02 23:18:27,395 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:18:28,656 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:18:31,248 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:18:31,250 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:18:31,499 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:18:31,790 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:18:32,510 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:19:35,068 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 179.000 352.000 10.000 [0.000]'}
+2023-10-02 23:20:50,312 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:20:50,317 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:20:50,328 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 18.53ms
+2023-10-02 23:22:51,830 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:22:51,837 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:22:51,855 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 27.30ms
+2023-10-02 23:22:52,917 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:22:54,180 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:22:56,811 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:22:56,812 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:22:57,062 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:22:57,334 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:22:58,074 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:23:18,340 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 330.000 692.000 10.000 [0.000]'}
+2023-10-02 23:23:29,787 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 330.000 692.000 10.000 [0.000]'}
+2023-10-02 23:24:39,957 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:24:39,963 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:24:39,974 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 18.69ms
+2023-10-02 23:24:41,037 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:24:42,299 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:24:44,885 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:24:44,887 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:24:45,136 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:24:45,423 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:24:45,897 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:25:46,185 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:25:46,191 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:25:46,204 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.27ms
+2023-10-02 23:25:47,266 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:25:48,527 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:25:51,050 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:25:51,052 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:25:51,302 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:25:51,565 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:25:52,316 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:26:08,182 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 375.000 10.000 [0.000]'}
+2023-10-02 23:26:11,806 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 355.000 10.000 [0.000]'}
+2023-10-02 23:26:12,019 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 355.000 10.000 [0.000]'}
+2023-10-02 23:26:12,254 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 355.000 10.000 [0.000]'}
+2023-10-02 23:26:12,553 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 355.000 10.000 [0.000]'}
+2023-10-02 23:26:18,687 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 351.000 35.000 [0.000]'}
+2023-10-02 23:26:18,909 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 175.000 351.000 35.000 [0.000]'}
+2023-10-02 23:26:58,318 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 195.000 351.000 10.000 [0.000]'}
+2023-10-02 23:26:58,539 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 195.000 351.000 10.000 [0.000]'}
+2023-10-02 23:26:58,744 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 195.000 351.000 10.000 [0.000]'}
+2023-10-02 23:26:59,066 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 195.000 351.000 10.000 [0.000]'}
+2023-10-02 23:27:41,423 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:27:41,430 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:27:41,442 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 22.52ms
+2023-10-02 23:27:42,507 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:27:43,769 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:27:46,337 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:27:46,338 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:27:46,588 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:27:46,850 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:27:47,599 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:28:00,034 [common.py:build_error()] - JSON-RPC Request Error - Requested Method: printer.gcode.script, Code: 400, Message: {'error': 'WebRequestError', 'message': 'Move out of range: 177.000 354.000 9.600 [0.000]'}
+2023-10-02 23:30:21,806 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:30:21,813 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:30:21,828 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 24.34ms
+2023-10-02 23:30:22,893 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:30:24,156 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:30:26,725 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:30:26,727 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:30:26,976 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:30:27,241 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:30:27,987 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:32:53,552 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:32:53,558 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:32:53,571 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 22.20ms
+2023-10-02 23:33:52,177 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:33:52,183 [app.py:post()] - Processing Uploaded File: printer.cfg
+2023-10-02 23:33:52,194 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 19.96ms
+2023-10-02 23:34:24,337 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:34:24,342 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:34:24,354 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.16ms
+2023-10-02 23:34:54,254 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:34:54,260 [app.py:post()] - Processing Uploaded File: printer.cfg
+2023-10-02 23:34:54,270 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 19.61ms
+2023-10-02 23:36:28,541 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:36:28,549 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:36:28,563 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 25.28ms
+2023-10-02 23:36:42,651 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:36:42,658 [app.py:post()] - Processing Uploaded File: printer.cfg
+2023-10-02 23:36:42,669 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.10ms
+2023-10-02 23:37:12,271 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:37:12,277 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:37:12,289 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.22ms
+2023-10-02 23:37:13,364 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:37:14,627 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:37:15,137 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:37:15,139 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:37:15,141 [klippy_connection.py:_check_ready()] - 
+Option 'variable_wipe_dist_y' in section 'gcode_macro NOZZLE_CLEAN' is not a valid literal: unexpected EOF while parsing (<unknown>, line 0)
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+Printer is halted
+
+2023-10-02 23:38:05,741 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:38:05,747 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:38:05,759 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 20.39ms
+2023-10-02 23:38:23,506 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:38:23,512 [app.py:post()] - Processing Uploaded File: PRINT_START.cfg
+2023-10-02 23:38:23,524 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 21.10ms
+2023-10-02 23:41:04,395 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:41:04,407 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:41:04,422 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 32.26ms
+2023-10-02 23:41:31,916 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:41:31,920 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:41:31,927 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 11.75ms
+2023-10-02 23:41:31,948 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:41:33,209 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:41:35,806 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:41:35,808 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:41:36,056 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:41:36,328 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:41:37,078 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:42:47,989 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:42:47,996 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:42:48,008 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 22.52ms
+2023-10-02 23:42:49,076 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:42:50,338 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:42:52,942 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:42:52,945 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:42:53,194 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:42:53,458 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:42:54,205 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:43:58,008 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2023-10-02 23:45:50,131 [app.py:prepare()] - Upload Request Received from 192.168.2.129
+2023-10-02 23:45:50,138 [app.py:post()] - Processing Uploaded File: NOZZLE_CLEAN.cfg
+2023-10-02 23:45:50,152 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.129) [_TRUSTED_USER_] 24.47ms
+2023-10-02 23:45:51,222 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-02 23:45:52,487 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-02 23:45:55,035 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-02 23:45:55,037 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-02 23:45:55,286 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-02 23:45:55,550 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-02 23:45:56,297 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-02 23:47:00,910 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
