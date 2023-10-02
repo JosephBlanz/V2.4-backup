@@ -18,10 +18,7 @@ if [ ! -d "$parent_path/$backup_folder" ]; then
 fi
 
 # Copy important files into backup folder
-while read -r path; do
-  file=$(basename "$path")
-  cp -r ~/printer_data/ ~/klipper-backup/
-done < <(grep 'path_' "$parent_path"/.env | sed 's/^.*=//')
+cp -r ~/printer_data/ ~/klipper-backup/
 
 # Git commands
 git init
