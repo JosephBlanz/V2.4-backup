@@ -6666,3 +6666,142 @@ Repo Warnings:
   Unofficial remote url: https://github.com/JosephBlanz/V2.4-backup.git
 2023-10-22 15:12:26,627 [base_deploy.py:log_info()] - Git Repo klipper-backup: Channel: dev
 2023-10-22 15:12:26,627 [base_deploy.py:log_info()] - Git Repo klipper-backup: Validity check for git repo passed
+2023-10-22 15:17:32,719 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.2.130
+2023-10-22 15:17:32,720 [app.py:log_request()] - 101 GET /websocket (192.168.2.130) [_TRUSTED_USER_] 3.65ms
+2023-10-22 15:17:32,721 [websockets.py:open()] - Websocket Opened: ID: 547923312544, Proxied: True, User Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36, Host Name: 192.168.2.173
+2023-10-22 15:17:32,737 [websockets.py:_handle_identify()] - Websocket 547923312544 Client Identified - Name: mainsail, Version: 2.8.0, Type: web
+2023-10-22 15:20:22,910 [websockets.py:write_to_socket()] - Websocket closed while writing: 547923312544
+2023-10-22 15:20:27,724 [websockets.py:on_close()] - Websocket Closed: ID: 547923312544 Close Code: None, Close Reason: None, Pong Time Elapsed: 44.99
+2023-10-22 15:21:18,006 [websockets.py:write_to_socket()] - Websocket closed while writing: 547923221472
+2023-10-22 15:21:22,966 [websockets.py:on_close()] - Websocket Closed: ID: 547923221472 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2023-10-22 15:22:09,000 [app.py:log_request()] - 101 GET /websocket (192.168.2.130) [_TRUSTED_USER_] 6.16ms
+2023-10-22 15:22:09,001 [websockets.py:open()] - Websocket Opened: ID: 547922795152, Proxied: True, User Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36, Host Name: 192.168.2.173
+2023-10-22 15:22:09,017 [websockets.py:_handle_identify()] - Websocket 547922795152 Client Identified - Name: mainsail, Version: 2.8.0, Type: web
+2023-10-22 15:23:12,119 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2023-10-22 15:24:56,114 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:24:56,136 [app.py:post()] - Processing Uploaded File: STEPPER_Y.cfg
+2023-10-22 15:24:56,148 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 37.25ms
+2023-10-22 15:25:03,317 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:25:03,326 [app.py:post()] - Processing Uploaded File: STEPPER_X.cfg
+2023-10-22 15:25:03,331 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 14.87ms
+2023-10-22 15:25:07,251 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2023-10-22 15:25:30,978 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-22 15:25:32,241 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-22 15:25:34,779 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-22 15:25:34,781 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-22 15:25:35,030 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-22 15:25:35,318 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-22 15:25:35,790 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-22 15:26:00,143 [app.py:log_request()] - 101 GET /websocket (192.168.2.131) [_TRUSTED_USER_] 3.09ms
+2023-10-22 15:26:00,144 [websockets.py:open()] - Websocket Opened: ID: 547922968336, Proxied: True, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Safari/605.1.15, Host Name: 192.168.2.173
+2023-10-22 15:26:00,148 [websockets.py:_handle_identify()] - Websocket 547922968336 Client Identified - Name: mainsail, Version: 2.8.0, Type: web
+2023-10-22 15:26:07,437 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:26:07,456 [app.py:post()] - Processing Uploaded File: STEPPER_X.cfg
+2023-10-22 15:26:07,468 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 34.16ms
+2023-10-22 15:26:14,137 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:26:14,160 [app.py:post()] - Processing Uploaded File: STEPPER_Y.cfg
+2023-10-22 15:26:14,173 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 38.17ms
+2023-10-22 15:26:17,346 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-22 15:26:18,611 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-22 15:26:21,143 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-22 15:26:21,144 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-22 15:26:21,394 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-22 15:26:21,664 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-22 15:26:22,655 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-22 15:27:03,146 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:27:03,165 [app.py:post()] - Processing Uploaded File: STEPPER_Z.cfg
+2023-10-22 15:27:03,176 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 32.96ms
+2023-10-22 15:27:09,003 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-22 15:27:10,271 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-22 15:27:12,845 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-22 15:27:12,847 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-22 15:27:13,096 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-22 15:27:13,366 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-22 15:27:13,856 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-22 15:27:20,421 [websockets.py:write_to_socket()] - Websocket closed while writing: 547922968336
+2023-10-22 15:27:25,148 [websockets.py:on_close()] - Websocket Closed: ID: 547922968336 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2023-10-22 15:28:19,026 [websockets.py:write_to_socket()] - Websocket closed while writing: 547922795152
+2023-10-22 15:28:24,005 [websockets.py:on_close()] - Websocket Closed: ID: 547922795152 Close Code: None, Close Reason: None, Pong Time Elapsed: 45.00
+2023-10-22 15:28:35,848 [app.py:log_request()] - 101 GET /websocket (192.168.2.130) [_TRUSTED_USER_] 3.58ms
+2023-10-22 15:28:35,848 [websockets.py:open()] - Websocket Opened: ID: 547888874736, Proxied: True, User Agent: Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Mobile Safari/537.36, Host Name: 192.168.2.173
+2023-10-22 15:28:35,856 [websockets.py:_handle_identify()] - Websocket 547888874736 Client Identified - Name: mainsail, Version: 2.8.0, Type: web
+2023-10-22 15:29:16,448 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2023-10-22 15:30:02,430 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:30:02,449 [app.py:post()] - Processing Uploaded File: STEPPER_Z.cfg
+2023-10-22 15:30:02,461 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 33.60ms
+2023-10-22 15:30:11,446 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:30:11,463 [app.py:post()] - Processing Uploaded File: STEPPER_Y.cfg
+2023-10-22 15:30:11,473 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 29.61ms
+2023-10-22 15:30:17,207 [app.py:prepare()] - Upload Request Received from 192.168.2.130
+2023-10-22 15:30:17,226 [app.py:post()] - Processing Uploaded File: STEPPER_X.cfg
+2023-10-22 15:30:17,239 [app.py:log_request()] - 201 POST /server/files/upload (192.168.2.130) [_TRUSTED_USER_] 35.03ms
+2023-10-22 15:30:24,187 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-22 15:30:25,449 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2023-10-22 15:30:27,984 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2023-10-22 15:30:27,986 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2023-10-22 15:30:28,235 [job_state.py:_handle_started()] - Job state initialized: standby
+2023-10-22 15:30:28,506 [klippy_connection.py:_check_ready()] - Klippy ready
+2023-10-22 15:30:28,996 [data_store.py:_init_sensors()] - Configuring available sensors: ['temperature_sensor M8P', 'temperature_sensor CM4', 'temperature_sensor SB2240', 'heater_bed', 'extruder', 'tmc2240 extruder']
+2023-10-22 15:31:32,152 [klippy_connection.py:wait()] - Request 'gcode/script' pending: 60.00 seconds
+2023-10-22 15:32:20,112 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2023-10-22 15:32:20,222 [websockets.py:on_close()] - Websocket Closed: ID: 547888874736 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 4.37
+2023-10-22 15:32:20,226 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2023-10-22 15:32:20,233 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 4
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 5
+overflow_pages: 0
+entries: 11
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 10
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 7
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 4
+overflow_pages: 0
+entries: 7
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2023-10-22 15:32:20,328 [server.py:main()] - Server Shutdown
