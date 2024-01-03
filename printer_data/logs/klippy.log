@@ -13287,3 +13287,37 @@ webhooks: registering remote method 'reboot_machine' for connection id: 54821854
 webhooks: registering remote method 'pause_job_queue' for connection id: 548218545296
 webhooks: registering remote method 'start_job_queue' for connection id: 548218545296
 Running Command {update_git_script}...:
+Reinitialized existing Git repository in /home/pi/klipper-backup/.git/
+
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+	 rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+	 alternative filtering tool such as 'git filter-repo'
+	 (https://github.com/newren/git-filter-repo/) instead.  See the
+	 filter-branch manual page for more details; to squelch this warning,
+	 set FILTER_BRANCH_SQUELCH_WARNING=1.
+
+Proceeding with filter-branch...
+
+
+Cannot rewrite branches: You have unstaged changes.
+
+[main d212beb] New backup from 03-01-24
+ 16 files changed, 46713 insertions(+), 19293 deletions(-)
+ create mode 100644 printer_data/config/printer-20240103_112610.cfg
+ create mode 100644 printer_data/gcodes/.thumbs/Cashplate M_ABS_20m26s-300x300.png
+ create mode 100644 printer_data/gcodes/.thumbs/Cashplate M_ABS_20m26s-32x32.png
+ create mode 100644 printer_data/gcodes/Cashplate M_ABS_20m26s.gcode
+ create mode 100644 printer_data/logs/crowsnest.log.2024-01-03
+ rewrite printer_data/logs/klippy.log (72%)
+ copy printer_data/logs/{klippy.log => klippy.log.2023-12-24} (100%)
+ create mode 100644 printer_data/logs/klippy.log.2023-12-25
+ rewrite printer_data/logs/moonraker.log (73%)
+ copy printer_data/logs/{moonraker.log => moonraker.log.2023-12-24} (97%)
+ create mode 100644 printer_data/logs/moonraker.log.2023-12-25
+
+To https://github.com/JosephBlanz/V2.4-backup.git
+   478032a..d212beb  main -> main
+
+Command {update_git_script} finished
+
+webhooks client 548218545296: Disconnected
