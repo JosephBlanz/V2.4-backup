@@ -251,3 +251,705 @@ leaf_pages: 1
 overflow_pages: 0
 entries: 1
 2024-01-26 14:48:48,291 [server.py:main()] - Server Shutdown
+-------------------- Log Start | Fri Jan 26 15:00:08 2024 --------------------
+data_path: /home/pi/printer_data
+is_default_data_path: False
+config_file: /home/pi/printer_data/config/moonraker.conf
+startup_warnings: []
+verbose: False
+debug: False
+asyncio_debug: False
+is_backup_config: False
+is_python_package: False
+instance_uuid: ae9facf950dc4d87bb114774772b309b
+unix_socket_path: /home/pi/printer_data/comms/moonraker.sock
+software_version: v0.8.0-286-gf44fc4b
+git_branch: master
+git_remote: origin
+git_repo_url: https://github.com/Arksine/moonraker.git
+modified_files: []
+unofficial_components: []
+log_file: /home/pi/printer_data/logs/moonraker.log
+python_version: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+launch_args: /home/pi/moonraker-env/bin/python /home/pi/moonraker/moonraker/moonraker.py -d /home/pi/printer_data
+msgspec_enabled: False
+uvloop_enabled: False
+2024-01-26 15:00:08,684 [confighelper.py:read_file()] - Configuration File '/home/pi/printer_data/config/moonraker.conf' parsed, total size: 1551 B
+2024-01-26 15:00:08,684 [server.py:add_log_rollover_item()] - 
+#################### Moonraker Configuration ####################
+
+[server]
+host = 0.0.0.0
+port = 7125
+klippy_uds_address = /home/pi/printer_data/comms/klippy.sock
+
+[authorization]
+trusted_clients = 
+	10.0.0.0/8
+	127.0.0.0/8
+	169.254.0.0/16
+	172.16.0.0/12
+	192.168.0.0/16
+	FE80::/10
+	::1/128
+cors_domains = 
+	*.lan
+	*.local
+	*://localhost
+	*://localhost:*
+	*://my.mainsail.xyz
+	*://app.fluidd.xyz
+
+[octoprint_compat]
+
+[history]
+
+[file_manager]
+enable_object_processing = True
+
+[update_manager]
+channel = dev
+refresh_interval = 168
+
+[update_manager mainsail]
+type = web
+channel = stable
+repo = mainsail-crew/mainsail
+path = ~/mainsail
+
+[update_manager crowsnest]
+type = git_repo
+path = ~/crowsnest
+origin = https://github.com/mainsail-crew/crowsnest.git
+install_script = tools/pkglist.sh
+
+[update_manager canboot]
+type = git_repo
+origin = https://github.com/Arksine/CanBoot.git
+path = ~/CanBoot
+is_system_service = False
+
+[update_manager client klipper-backup]
+type = git_repo
+path = ~/klipper-backup
+origin = https://github.com/Staubgeborener/klipper-backup.git
+install_script = install.sh
+is_system_service = False
+primary_branch = main
+
+#################################################################
+All Configuration Files:
+/home/pi/printer_data/config/moonraker.conf
+#################################################################
+2024-01-26 15:00:08,855 [server.py:load_component()] - Component (secrets) loaded
+2024-01-26 15:00:08,864 [server.py:load_component()] - Component (template) loaded
+2024-01-26 15:00:08,872 [server.py:load_component()] - Component (klippy_connection) loaded
+2024-01-26 15:00:09,492 [server.py:load_component()] - Component (application) loaded
+2024-01-26 15:00:09,554 [server.py:load_component()] - Component (websockets) loaded
+2024-01-26 15:00:09,647 [server.py:load_component()] - Component (dbus_manager) loaded
+2024-01-26 15:00:09,672 [server.py:add_log_rollover_item()] - 
+Database Versions: pylmdb = 1.4.1, lmdb = (0, 9, 29)
+Unsafe Shutdown Count: 6
+2024-01-26 15:00:09,678 [server.py:load_component()] - Component (database) loaded
+2024-01-26 15:00:09,816 [file_manager.py:__init__()] - Using File System Observer: inotify
+2024-01-26 15:00:09,863 [server.py:load_component()] - Component (file_manager) loaded
+2024-01-26 15:00:09,879 [server.py:load_component()] - Component (klippy_apis) loaded
+2024-01-26 15:00:10,173 [server.py:add_log_rollover_item()] - 
+System Info:
+
+***python***
+  version: (3, 9, 2, 'final', 0)
+  version_string: 3.9.2 (default, Feb 28 2021, 17:03:44)  [GCC 10.2.1 20210110]
+
+***cpu_info***
+  cpu_count: 4
+  bits: 64bit
+  processor: aarch64
+  cpu_desc: 
+  serial_number: 10000000718bc392
+  hardware_desc: BCM2835
+  model: Raspberry Pi Compute Module 4 Rev 1.0
+  total_memory: 3705528
+  memory_units: kB
+
+***sd_info***
+  manufacturer_id: 15
+  manufacturer: Unknown
+  oem_id: 0100
+  product_name: BJTD4
+  product_revision: 5.2
+  serial_number: 033043b6
+  manufacturer_date: 7/2172
+  capacity: Unknown
+  total_bytes: 0
+
+***distribution***
+  name: Debian GNU/Linux 11 (bullseye)
+  id: debian
+  version: 11
+  version_parts: {'major': '11', 'minor': '', 'build_number': ''}
+  like: 
+  codename: bullseye
+  release_info: {}
+
+***virtualization***
+  virt_type: none
+  virt_identifier: none
+
+***network***
+
+***canbus***
+
+***Allowed Services***
+  klipper_mcu
+  webcamd
+  MoonCord
+  KlipperScreen
+  moonraker-telegram-bot
+  moonraker-obico
+  sonar
+  crowsnest
+  octoeverywhere
+  ratos-configurator
+2024-01-26 15:00:10,193 [server.py:load_component()] - Component (shell_command) loaded
+2024-01-26 15:00:10,194 [machine.py:__init__()] - Using System Provider: systemd_dbus
+2024-01-26 15:00:10,199 [server.py:load_component()] - Component (machine) loaded
+2024-01-26 15:00:10,209 [server.py:load_component()] - Component (data_store) loaded
+2024-01-26 15:00:10,224 [proc_stats.py:__init__()] - Detected 'vcgencmd', throttle checking enabled
+2024-01-26 15:00:10,225 [server.py:load_component()] - Component (proc_stats) loaded
+2024-01-26 15:00:10,228 [server.py:load_component()] - Component (job_state) loaded
+2024-01-26 15:00:10,234 [server.py:load_component()] - Component (job_queue) loaded
+2024-01-26 15:00:10,243 [server.py:load_component()] - Component (http_client) loaded
+2024-01-26 15:00:10,250 [server.py:load_component()] - Component (announcements) loaded
+2024-01-26 15:00:10,255 [server.py:load_component()] - Component (webcam) loaded
+2024-01-26 15:00:10,266 [server.py:load_component()] - Component (extensions) loaded
+2024-01-26 15:00:10,271 [server.py:load_component()] - Component (history) loaded
+2024-01-26 15:00:10,309 [authorization.py:__init__()] - Authorization Configuration Loaded
+Trusted Clients:
+10.0.0.0/8
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.168.0.0/16
+fe80::/10
+::1/128
+CORS Domains:
+.*\.lan
+.*\.local
+.*://localhost
+.*://localhost:.*
+.*://my\.mainsail\.xyz
+.*://app\.fluidd\.xyz
+2024-01-26 15:00:10,314 [server.py:load_component()] - Component (authorization) loaded
+2024-01-26 15:00:10,447 [base_deploy.py:log_info()] - Git Repo moonraker: Detected virtualenv: /home/pi/moonraker-env
+2024-01-26 15:00:10,451 [base_deploy.py:log_info()] - Git Repo klipper: Detected virtualenv: /home/pi/klippy-env
+2024-01-26 15:00:10,466 [server.py:load_component()] - Component (update_manager) loaded
+2024-01-26 15:00:10,480 [server.py:load_component()] - Component (octoprint_compat) loaded
+2024-01-26 15:00:10,482 [server.py:_initialize_component()] - Performing Component Post Init: [dbus_manager]
+2024-01-26 15:00:10,500 [server.py:_initialize_component()] - Performing Component Post Init: [file_manager]
+2024-01-26 15:00:10,540 [server.py:_initialize_component()] - Performing Component Post Init: [machine]
+2024-01-26 15:00:10,540 [machine.py:validation_init()] - Installation version in database up to date
+2024-01-26 15:00:10,817 [machine.py:check_virt_status()] - No Virtualization Detected
+2024-01-26 15:00:10,833 [machine.py:_find_public_ip()] - Detected Local IP: 192.168.2.173
+2024-01-26 15:00:10,837 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.2.173
+2024-01-26 15:00:10,904 [server.py:add_log_rollover_item()] - 
+Systemd unit moonraker.service:
+unit_name: moonraker.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice', 'network-online.target']
+**After=['-.mount', 'basic.target', 'sysinit.target', 'system.slice', 'network-online.target', 'klipper.service', 'systemd-journald.socket']
+**SupplementaryGroups=['moonraker-admin']
+**EnvironmentFiles=/home/pi/printer_data/systemd/moonraker.env
+**ExecStart=/home/pi/moonraker-env/bin/python $MOONRAKER_ARGS
+**WorkingDirectory=/home/pi/moonraker
+**FragmentPath=/etc/systemd/system/moonraker.service
+**Description=API Server for Klipper SV1
+**User=pi
+2024-01-26 15:00:10,904 [server.py:_initialize_component()] - Performing Component Post Init: [proc_stats]
+2024-01-26 15:00:10,904 [server.py:_initialize_component()] - Performing Component Post Init: [announcements]
+2024-01-26 15:00:10,906 [server.py:_initialize_component()] - Performing Component Post Init: [webcam]
+2024-01-26 15:00:10,907 [webcam.py:_set_default_host_ip()] - Default public webcam address set: http://192.168.2.173
+2024-01-26 15:00:10,910 [server.py:_initialize_component()] - Performing Component Post Init: [klippy_connection]
+2024-01-26 15:00:10,910 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['-.mount', 'sysinit.target', 'system.slice']
+**After=['system.slice', 'network-online.target', 'basic.target', 'sysinit.target', 'systemd-journald.socket', '-.mount']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/pi/printer_data/systemd/klipper.env
+**ExecStart=/home/pi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/pi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=pi
+2024-01-26 15:00:10,910 [server.py:_initialize_component()] - Performing Component Post Init: [history]
+2024-01-26 15:00:10,914 [server.py:_initialize_component()] - Performing Component Post Init: [authorization]
+2024-01-26 15:00:10,914 [server.py:_initialize_component()] - Performing Component Post Init: [update_manager]
+2024-01-26 15:00:11,177 [base_deploy.py:log_info()] - PackageDeploy: PackageKit Provider Configured
+2024-01-26 15:00:11,178 [base_deploy.py:log_info()] - Git Repo moonraker: Stored pip version: 20.3.4
+2024-01-26 15:00:13,858 [extensions.py:start_unix_server()] - Creating Unix Domain Socket at '/home/pi/printer_data/comms/moonraker.sock'
+2024-01-26 15:00:13,860 [server.py:start_server()] - Starting Moonraker on (0.0.0.0, 7125), Hostname: raspberrypi
+2024-01-26 15:00:13,861 [application.py:listen()] - SSL Certificate/Key not configured, aborting HTTPS Server startup
+2024-01-26 15:00:14,116 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:00:14,192 [server.py:add_log_rollover_item()] - 
+Systemd unit klipper.service:
+unit_name: klipper.service
+is_default: True
+manager: systemd
+Properties:
+**Requires=['system.slice', 'sysinit.target', '-.mount']
+**After=['system.slice', 'basic.target', 'network-online.target', 'sysinit.target', '-.mount', 'systemd-journald.socket']
+**SupplementaryGroups=[]
+**EnvironmentFiles=/home/pi/printer_data/systemd/klipper.env
+**ExecStart=/home/pi/klippy-env/bin/python $KLIPPER_ARGS
+**WorkingDirectory=/home/pi/klipper
+**FragmentPath=/etc/systemd/system/klipper.service
+**Description=Klipper 3D Printer Firmware SV1
+**User=pi
+2024-01-26 15:00:14,446 [server.py:add_log_rollover_item()] - Klipper Version: v0.12.0-98-g5e433fff-dirty
+2024-01-26 15:00:14,465 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:00:14,467 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:00:14,471 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.11.0-304-gf7567a0d
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:00:16,260 [base_deploy.py:log_info()] - PackageKit: Detected 0 package updates:
+
+2024-01-26 15:00:16,278 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker status --porcelain -b) successfully finished
+2024-01-26 15:00:16,304 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker branch --list --no-color) successfully finished
+2024-01-26 15:00:16,329 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker remote get-url origin) successfully finished
+2024-01-26 15:00:17,605 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker fetch origin --prune --progress) successfully finished
+2024-01-26 15:00:17,619 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-26 15:00:17,634 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker rev-parse HEAD) successfully finished
+2024-01-26 15:00:17,658 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-26 15:00:17,672 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker rev-parse origin/master) successfully finished
+2024-01-26 15:00:17,695 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-26 15:00:17,710 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/moonraker rev-list HEAD..f44fc4b85be5d6f6569edeb332c8e2770a39d1cd --count) successfully finished
+2024-01-26 15:00:17,712 [git_deploy.py:log_repo_info()] - Git Repo moonraker Detected:
+Owner: Arksine
+Repository Name: moonraker
+Path: /home/pi/moonraker
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/moonraker.git
+Recovery URL: https://github.com/Arksine/moonraker.git
+Current Commit SHA: f44fc4b85be5d6f6569edeb332c8e2770a39d1cd
+Upstream Commit SHA: f44fc4b85be5d6f6569edeb332c8e2770a39d1cd
+Current Version: v0.8.0-286-gf44fc4b8
+Upstream Version: v0.8.0-286-gf44fc4b8
+Rollback Commit: 9ad8fed81ea4f81d308e68a301a5ccb84f77f192
+Rollback Branch: master
+Rollback Version: v0.8.0-206-g9ad8fed8
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-01-26 15:00:17,712 [base_deploy.py:log_info()] - Git Repo moonraker: Channel: dev
+2024-01-26 15:00:17,713 [base_deploy.py:log_info()] - Git Repo moonraker: Validity check for git repo passed
+2024-01-26 15:00:17,745 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper status --porcelain -b) successfully finished
+2024-01-26 15:00:17,772 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper branch --list --no-color) successfully finished
+2024-01-26 15:00:17,797 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper remote get-url origin) successfully finished
+2024-01-26 15:00:19,089 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper fetch origin --prune --progress) successfully finished
+2024-01-26 15:00:19,103 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-26 15:00:19,117 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-parse HEAD) successfully finished
+2024-01-26 15:00:19,225 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-26 15:00:19,239 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-parse origin/master) successfully finished
+2024-01-26 15:00:19,342 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-26 15:00:19,357 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper rev-list HEAD..5e433fff06148fde3f0046ad7f1121e9af2181d9 --count) successfully finished
+2024-01-26 15:00:19,358 [git_deploy.py:log_repo_info()] - Git Repo klipper Detected:
+Owner: Klipper3d
+Repository Name: klipper
+Path: /home/pi/klipper
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Klipper3d/klipper
+Recovery URL: https://github.com/Klipper3d/klipper
+Current Commit SHA: 5e433fff06148fde3f0046ad7f1121e9af2181d9
+Upstream Commit SHA: 5e433fff06148fde3f0046ad7f1121e9af2181d9
+Current Version: v0.12.0-98-g5e433fff
+Upstream Version: v0.12.0-98-g5e433fff
+Rollback Commit: 38221df83ada0a1a9731b18b0226a02726b1c236
+Rollback Branch: master
+Rollback Version: v0.12.0-12-g38221df8
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Repo has untracked source files: ['klippy/extras/gcode_shell_command.py']
+2024-01-26 15:00:19,358 [base_deploy.py:log_info()] - Git Repo klipper: Channel: dev
+2024-01-26 15:00:19,358 [base_deploy.py:log_info()] - Git Repo klipper: Validity check for git repo passed
+2024-01-26 15:00:20,502 [base_deploy.py:log_info()] - Web Client mainsail: Detected
+Repo: mainsail-crew/mainsail
+Channel: stable
+Path: /home/pi/mainsail
+Local Version: v2.9.1
+Remote Version: v2.9.1
+Valid: True
+Fallback Detected: False
+Pre-release: False
+Download Url: https://github.com/mainsail-crew/mainsail/releases/download/v2.9.1/mainsail.zip
+Download Size: 2071443
+Content Type: application/zip
+Rollback Version: v2.8.0
+Rollback Repo: mainsail-crew/mainsail
+2024-01-26 15:00:20,554 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest status --porcelain -b) successfully finished
+2024-01-26 15:00:20,593 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest branch --list --no-color) successfully finished
+2024-01-26 15:00:20,628 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest remote get-url origin) successfully finished
+2024-01-26 15:00:22,270 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest fetch origin --prune --progress) successfully finished
+2024-01-26 15:00:22,285 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-26 15:00:22,299 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-parse HEAD) successfully finished
+2024-01-26 15:00:22,320 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-26 15:00:22,334 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-parse origin/master) successfully finished
+2024-01-26 15:00:22,354 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-26 15:00:22,370 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/crowsnest rev-list HEAD..c0c9c418c8e7d6158bfd7bb51a184ab20b77d075 --count) successfully finished
+2024-01-26 15:00:22,371 [git_deploy.py:log_repo_info()] - Git Repo crowsnest Detected:
+Owner: mainsail-crew
+Repository Name: crowsnest
+Path: /home/pi/crowsnest
+Remote: origin
+Branch: master
+Remote URL: https://github.com/mainsail-crew/crowsnest.git
+Recovery URL: https://github.com/mainsail-crew/crowsnest.git
+Current Commit SHA: c0c9c418c8e7d6158bfd7bb51a184ab20b77d075
+Upstream Commit SHA: c0c9c418c8e7d6158bfd7bb51a184ab20b77d075
+Current Version: v4.1.3-1-gc0c9c418
+Upstream Version: v4.1.3-1-gc0c9c418
+Rollback Commit: c9bc30414e10e0fadf20e379b614b28869783c22
+Rollback Branch: master
+Rollback Version: v4.0.4-0-gc9bc3041
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-01-26 15:00:22,371 [base_deploy.py:log_info()] - Git Repo crowsnest: Channel: dev
+2024-01-26 15:00:22,371 [base_deploy.py:log_info()] - Git Repo crowsnest: Validity check for git repo passed
+2024-01-26 15:00:22,413 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot status --porcelain -b) successfully finished
+2024-01-26 15:00:22,440 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot branch --list --no-color) successfully finished
+2024-01-26 15:00:22,465 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot remote get-url origin) successfully finished
+2024-01-26 15:00:23,377 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot fetch origin --prune --progress) successfully finished
+2024-01-26 15:00:23,392 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot merge-base --is-ancestor HEAD origin/master) successfully finished
+2024-01-26 15:00:23,405 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot rev-parse HEAD) successfully finished
+2024-01-26 15:00:23,428 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-26 15:00:23,441 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot rev-parse origin/master) successfully finished
+2024-01-26 15:00:23,458 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot describe origin/master --always --tags --long --abbrev=8) successfully finished
+2024-01-26 15:00:23,473 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/CanBoot rev-list HEAD..ec4df2e45a7c5ceb95253c9441a0a04c1da444fd --count) successfully finished
+2024-01-26 15:00:23,474 [git_deploy.py:log_repo_info()] - Git Repo canboot Detected:
+Owner: Arksine
+Repository Name: CanBoot
+Path: /home/pi/CanBoot
+Remote: origin
+Branch: master
+Remote URL: https://github.com/Arksine/CanBoot
+Recovery URL: https://github.com/Arksine/CanBoot
+Current Commit SHA: ec4df2e45a7c5ceb95253c9441a0a04c1da444fd
+Upstream Commit SHA: ec4df2e45a7c5ceb95253c9441a0a04c1da444fd
+Current Version: v0.0.1-61-gec4df2e4
+Upstream Version: v0.0.1-61-gec4df2e4
+Rollback Commit: 0ac72fc2c66433b4dde360459e55414499e863b3
+Rollback Branch: master
+Rollback Version: v0.0.1-59-g0ac72fc2
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+2024-01-26 15:00:23,474 [base_deploy.py:log_info()] - Git Repo canboot: Channel: dev
+2024-01-26 15:00:23,474 [base_deploy.py:log_info()] - Git Repo canboot: Validity check for git repo passed
+2024-01-26 15:00:23,496 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup status --porcelain -b) successfully finished
+2024-01-26 15:00:23,522 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup branch --list --no-color) successfully finished
+2024-01-26 15:00:23,548 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup remote get-url origin) successfully finished
+2024-01-26 15:00:23,549 [git_deploy.py:_check_moved_origin()] - Git repo klipper-backup: Performing moved origin check - https://github.com/josephblanz/v2.4-backup
+2024-01-26 15:00:26,803 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup fetch origin --prune --progress) successfully finished
+2024-01-26 15:00:26,825 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup merge-base --is-ancestor HEAD origin/main) successfully finished
+2024-01-26 15:00:26,843 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup rev-parse HEAD) successfully finished
+2024-01-26 15:00:26,925 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup describe --always --tags --long --dirty --abbrev=8) successfully finished
+2024-01-26 15:00:26,947 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup rev-parse origin/main) successfully finished
+2024-01-26 15:00:26,976 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup describe origin/main --always --tags --long --abbrev=8) successfully finished
+2024-01-26 15:00:43,952 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup rev-list HEAD..e5355e4a7ac64a5afaa703f2709b5bdbf46be709 --count) successfully finished
+2024-01-26 15:00:43,980 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup rev-list HEAD --count) successfully finished
+2024-01-26 15:00:43,982 [git_deploy.py:_set_versions()] - Git repo klipper-backup: Failed to detect current version, got 'e5355e4a'. Falling back to inferred version: v0.0.0-101-ge5355e4a-inferred
+2024-01-26 15:00:44,007 [shell_command.py:_check_proc_success()] - Command (git -C /home/pi/klipper-backup rev-list e5355e4a7ac64a5afaa703f2709b5bdbf46be709 --count) successfully finished
+2024-01-26 15:00:44,011 [git_deploy.py:_set_versions()] - Git repo klipper-backup: Failed to detect upstream version, got 'e5355e4a'. Falling back to inferred version: v0.0.0-101-inferred
+2024-01-26 15:00:44,013 [git_deploy.py:log_repo_info()] - Git Repo klipper-backup Detected:
+Owner: JosephBlanz
+Repository Name: V2
+Path: /home/pi/klipper-backup
+Remote: origin
+Branch: main
+Remote URL: https://github.com/JosephBlanz/V2.4-backup.git
+Recovery URL: https://github.com/JosephBlanz/V2.4-backup.git
+Current Commit SHA: e5355e4a7ac64a5afaa703f2709b5bdbf46be709
+Upstream Commit SHA: e5355e4a7ac64a5afaa703f2709b5bdbf46be709
+Current Version: v0.0.0-101-ge5355e4a-inferred
+Upstream Version: v0.0.0-101-inferred
+Rollback Commit: 49833387caa8bc74d5611d544f9b4002c989b0c5
+Rollback Branch: main
+Rollback Version: 49833387
+Is Dirty: False
+Is Detached: False
+Is Shallow: False
+Commits Behind Count: 0
+Diverged: False
+Repo Warnings:
+  Unofficial remote url: https://github.com/JosephBlanz/V2.4-backup.git
+2024-01-26 15:00:44,013 [base_deploy.py:log_info()] - Git Repo klipper-backup: Channel: dev
+2024-01-26 15:00:44,013 [base_deploy.py:log_info()] - Git Repo klipper-backup: Validity check for git repo passed
+2024-01-26 15:01:17,294 [authorization.py:_check_trusted_connection()] - Trusted Connection Detected, IP: 192.168.2.129
+2024-01-26 15:01:17,305 [application.py:log_request()] - 101 GET /websocket (192.168.2.129) [_TRUSTED_USER_] 14.59ms
+2024-01-26 15:01:17,306 [websockets.py:open()] - Websocket Opened: ID: 547892524368, Proxied: True, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15, Host Name: 192.168.2.173
+2024-01-26 15:01:17,310 [websockets.py:_handle_identify()] - Websocket 547892524368 Client Identified - Name: mainsail, Version: 2.9.1, Type: web
+2024-01-26 15:01:22,393 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:01:23,653 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:01:26,257 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:01:26,258 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:01:26,261 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.11.0-304-gf7567a0d
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:02:35,884 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:02:36,640 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:02:39,882 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:02:39,884 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:02:39,887 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.11.0-304-gf7567a0d
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:04:58,694 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:04:59,952 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:05:07,074 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:05:08,334 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:05:13,626 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:05:14,886 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:05:22,508 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:05:23,770 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:05:27,822 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:05:29,082 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:05:41,711 [websockets.py:on_close()] - Websocket Closed: ID: 547892524368 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 4.40
+2024-01-26 15:05:41,904 [application.py:log_request()] - 101 GET /websocket (192.168.2.129) [_TRUSTED_USER_] 4.99ms
+2024-01-26 15:05:41,905 [websockets.py:open()] - Websocket Opened: ID: 547883554176, Proxied: True, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15, Host Name: 192.168.2.173
+2024-01-26 15:05:41,935 [websockets.py:_handle_identify()] - Websocket 547883554176 Client Identified - Name: mainsail, Version: 2.9.1, Type: web
+2024-01-26 15:06:30,855 [websockets.py:on_close()] - Websocket Closed: ID: 547883554176 Close Code: 1001, Close Reason: None, Pong Time Elapsed: 8.95
+2024-01-26 15:06:31,025 [application.py:log_request()] - 101 GET /websocket (192.168.2.129) [_TRUSTED_USER_] 4.00ms
+2024-01-26 15:06:31,026 [websockets.py:open()] - Websocket Opened: ID: 547883809280, Proxied: True, User Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15, Host Name: 192.168.2.173
+2024-01-26 15:06:31,060 [websockets.py:_handle_identify()] - Websocket 547883809280 Client Identified - Name: mainsail, Version: 2.9.1, Type: web
+2024-01-26 15:07:00,551 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:07:00,553 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:07:00,557 [klippy_connection.py:_check_ready()] - 
+mcu 'mcu': Unable to connect
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Error configuring printer
+
+2024-01-26 15:07:06,393 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:07:07,653 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:08:39,278 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:08:39,281 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:08:39,286 [klippy_connection.py:_check_ready()] - 
+mcu 'mcu': Unable to connect
+Once the underlying issue is corrected, use the
+"FIRMWARE_RESTART" command to reset the firmware, reload the
+config, and restart the host software.
+Error configuring printer
+
+2024-01-26 15:10:19,206 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:10:24,481 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:10:27,879 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:10:27,881 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:10:27,883 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.12.0-98-g5e433fff
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:10:36,475 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:10:37,737 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:10:40,340 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:10:40,342 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:10:40,344 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.12.0-98-g5e433fff
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:11:23,647 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:11:29,932 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:11:33,047 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:11:33,049 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:11:33,051 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.12.0-98-g5e433fff
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:18:12,320 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:18:13,582 [klippy_connection.py:_do_connect()] - Klippy Connection Established
+2024-01-26 15:18:16,214 [klippy_connection.py:_request_initial_subscriptions()] - Webhooks Subscribed
+2024-01-26 15:18:16,216 [klippy_connection.py:_request_initial_subscriptions()] - GCode Output Subscribed
+2024-01-26 15:18:16,219 [klippy_connection.py:_check_ready()] - 
+MCU Protocol error
+
+This is frequently caused by running an older version of the
+firmware on the MCU(s). Fix by recompiling and flashing the
+firmware.
+
+Your Klipper version is: v0.12.0-98-g5e433fff-dirty
+MCU(s) which should be updated:
+mcu: Current version v0.12.0-98-g5e433fff
+SB2240: Current version v0.11.0-271-g5f990f93
+Up-to-date MCU(s):
+<none>
+
+Once the underlying issue is corrected, use the "RESTART"
+command to reload the config and restart the host software.
+
+mcu 'SB2240': Command format mismatch: query_adxl345 oid=%c rest_ticks=%u vs query_adxl345 oid=%c clock=%u rest_ticks=%u
+2024-01-26 15:19:29,427 [server.py:_handle_term_signal()] - Exiting with signal SIGTERM
+2024-01-26 15:19:29,533 [websockets.py:on_close()] - Websocket Closed: ID: 547883809280 Close Code: 1001, Close Reason: Server Shutdown, Pong Time Elapsed: 8.50
+2024-01-26 15:19:29,535 [klippy_connection.py:_on_connection_closed()] - Klippy Connection Removed
+2024-01-26 15:19:29,547 [database.py:close()] - Database statistics:
+
+announcements:
+psize: 4096
+depth: 0
+branch_pages: 0
+leaf_pages: 0
+overflow_pages: 0
+entries: 0
+authorized_users:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+gcode_metadata:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 5
+overflow_pages: 0
+entries: 12
+history:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 16
+overflow_pages: 0
+entries: 34
+mainsail:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 10
+moonraker:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 7
+update_manager:
+psize: 4096
+depth: 2
+branch_pages: 1
+leaf_pages: 4
+overflow_pages: 0
+entries: 7
+webcams:
+psize: 4096
+depth: 1
+branch_pages: 0
+leaf_pages: 1
+overflow_pages: 0
+entries: 1
+2024-01-26 15:19:29,650 [server.py:main()] - Server Shutdown
