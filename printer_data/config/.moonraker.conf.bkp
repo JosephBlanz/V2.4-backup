@@ -43,12 +43,6 @@ path = ~/crowsnest
 origin = https://github.com/mainsail-crew/crowsnest.git
 install_script = tools/pkglist.sh
 
-[update_manager canboot]
-type = git_repo
-origin = https://github.com/Arksine/CanBoot.git
-path = ~/CanBoot
-is_system_service = False
-
 [update_manager client klipper-backup]
 type = git_repo
 path = ~/klipper-backup
